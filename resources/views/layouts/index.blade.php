@@ -7,7 +7,7 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="./image/favicon.png" type="image/png">
 </head>
 <body>
 
@@ -61,6 +61,5 @@
 <div id="main" class="container">
     @yield('content')
 </div>
-
 </body>
 </html>

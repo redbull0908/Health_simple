@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterPostRequest;
 use App\Http\Requests\AuthPostRequest;
+use App\Http\Requests\UserInfoRequest;
+use App\Http\Requests\UserPasRequest;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
@@ -12,6 +14,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use JetBrains\PhpStorm\NoReturn;
 
 class AccountController extends Controller
 {
@@ -74,7 +77,41 @@ class AccountController extends Controller
     }
 
     public function get_profile (){
-//        dd(Carbon::now()->year - Carbon::make(Auth::user()->birthday)->year);
         return \view('user_profile');
+    }
+
+    public function change_pas(Request $request){
+
+        $request->validate(
+            ['Password'=>'required|min:6',
+                'current_Password'=>'required|min:6'],
+            ['required'=>'Введите пароль',
+                'min'=>'Пароль минимум 6 символов']
+        );
+
+        if($request->current_Password === $request->Password_confirm) {
+
+
+            if (\Hash::check($request->current_Password, Auth::user()->password)) {
+                $user = Auth::user();
+                $user->setAttribute('password', \Hash::make($request->Password));
+                if ($user->save()) {
+                    return back()->withErrors(
+                        ['suc' => 'Пароль изменен']
+                    );
+                }
+            } else {
+                return back()->withErrors(
+                    ['message' => 'Неверный пароль.']
+                );
+            }
+        }
+        return back()->withErrors(
+            ['message' => 'Пароли не совпадают.']
+        );
+    }
+
+    public function change_info(UserInfoRequest $request){
+        dd($request);
     }
 }

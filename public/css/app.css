@@ -296,3 +296,7 @@ button.accept-policy {
 #doctor_img {
     height: 70%;
 }
+
+.card {
+    width: 18rem;
+}
