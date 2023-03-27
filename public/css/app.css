@@ -15,7 +15,7 @@ html {
 
 body {
     margin-bottom: 80px;
-    background-image: url('../image/main.jpg');
+    background-image: url('../storage/uploads/image/main.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 1;
@@ -175,12 +175,8 @@ button.accept-policy {
     display: -ms-inline-flexbox;
     display: inline-flex;
     -webkit-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
     align-items: center;
     -webkit-justify-content: center;
-    -moz-justify-content: center;
-    -ms-justify-content: center;
     justify-content: center;
     -ms-flex-pack: center;
     text-align: center;
@@ -299,4 +295,23 @@ button.accept-policy {
 
 .card {
     width: 18rem;
+}
+
+.hidden {
+    display: none;
+}
+
+input[type='file'] {
+    background-color: #ffeba7;
+    color: mediumslateblue;
+    font-weight: 600;
+}
+input[type='file']:hover {
+    cursor: pointer;
+    background-color: mediumslateblue;
+    color: #ffffff;
+}
+
+#profile_img {
+    max-height: 30%;
 }

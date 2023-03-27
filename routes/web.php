@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\MainController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
@@ -34,20 +33,9 @@ Route::controller(AccountController::class)->group(function () {
     Route::get('profile', 'get_profile')->name('profile')->middleware('permission:view_profile');
     Route::get('logout', 'logout')->name('logout');
 
-    Route::get('change_pas', function () {
-        return view('partial.user.change_password_user');
-    })->name('change_pas');
-
-    Route::get('get_info', function () {
-        return view('partial.user.info_user');
-    })->name('get_info');
-
-    Route::get('change_info', function () {
-        return view('partial.user.change_info_user');
-    })->name('change_info');
-
     Route::post('profile/change_pas','change_pas')->name('change_pas_save');
     Route::post('profile/change_info','change_info')->name('change_info_save');
+    Route::post('profile/upload_image','save_image')->name('save_image');
 });
 
 

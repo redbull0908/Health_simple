@@ -28,7 +28,7 @@
                     {{$category->name}}
                 </div>
                 <div class="card-body" id="card_category">
-                    <img src="{{'./image/category/'.$category->img}}" class="card-img" alt="not found">
+                    <img src="{{asset('storage').'/'.($category->img ?? 'uploads/image/no_icon.png')}}" class="card-img" alt="not found">
                     <p class="card-text mt-3">{{$category->description}}</p>
                     <div class="row">
                         <a class="btn btn-primary" href="{{route('service',['id'=> $category->id])}}">Подробнее</a>
