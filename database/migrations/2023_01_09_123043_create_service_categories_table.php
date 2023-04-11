@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id')->nullable(false);
             $table->string('name');
             $table->string('url_name');
+            $table->string('img')->default('../image/bg/services.jpg');
             $table->string('description');
         });
     }

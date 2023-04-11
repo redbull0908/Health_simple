@@ -22,32 +22,38 @@ class DatabaseSeeder extends Seeder
          \DB::table('service_categories')->insert([
              'name'=>'Офтальмология',
              'description'=>'Лечение и профилактика болезней глаз...',
-             'url_name'=>'oftalmologia'
+             'url_name'=>'oftalmologia',
+             'img'=>'../image/bg/category/oftalmolog.jpg'
          ]);
         \DB::table('service_categories')->insert([
             'name'=>'Онкология',
             'description'=>'По данным статистики, сегодня около 90% злокачественных образований поддаются лечению.',
-            'url_name'=>'onkologia'
+            'url_name'=>'onkologia',
+            'img'=>'../image/bg/category/onlologia.jpg'
         ]);
         \DB::table('service_categories')->insert([
             'name'=>'Лабораторная диагностика',
             'description'=>'Обширный спектр лабораторных услуг...',
-            'url_name'=>'laboratornaya_diagnostica'
+            'url_name'=>'laboratornaya_diagnostica',
+            'img'=>'../image/bg/category/diagnostika.jpg'
         ]);
         \DB::table('service_categories')->insert([
             'name'=>'Узи',
             'description'=>'УЗИ является одним из самых результативных методов диагностики в современной медицине на сегодняшний...',
-            'url_name'=>'uzi'
+            'url_name'=>'uzi',
+            'img'=>'../image/bg/category/uzi.jpg'
         ]);
         \DB::table('service_categories')->insert([
             'name'=>'Урология',
             'description'=>'В медицинском центре Вам окажут профессиональную помощь лучшие специалисты в области урологи.',
-            'url_name'=>'urologia'
+            'url_name'=>'urologia',
+            'img'=>'../image/bg/category/urologia.jpg'
         ]);
         \DB::table('service_categories')->insert([
             'name'=>'Гинекология',
             'description'=>'Заботе о женщине и ее здоровью в нашем центре уделяется большое внимание.',
-            'url_name'=>'ginekologia'
+            'url_name'=>'ginekologia',
+            'img'=>'../image/bg/category/ginekologia.jpg'
         ]);
 
         //Services
@@ -119,6 +125,24 @@ class DatabaseSeeder extends Seeder
             'specialization'=>'Врач-акушер-гинеколог',
             'category'=>'первая',
             'img'=>'uploads/image/doctors/kubareva.jpg'
+        ]);
+
+        \DB::table('doctors')->insert([
+            'full_name'=>'Волковская Тамара',
+            'experience'=>'12 лет',
+            'id_service_category'=>3,
+            'specialization'=>'Врач клинической лабораторной диагностики',
+            'category'=>'высшая',
+            'img'=>'uploads/image/doctors/volkovskaa_tamara.jpg'
+        ]);
+
+        \DB::table('doctors')->insert([
+            'full_name'=>'Кравец Ольга',
+            'experience'=>'15 лет',
+            'id_service_category'=>3,
+            'specialization'=>'Врач клинической лабораторной диагностики',
+            'category'=>'первая',
+            'img'=>'uploads/image/doctors/kravec_olga.jpg'
         ]);
 
         //Roles

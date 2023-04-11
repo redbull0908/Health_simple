@@ -2174,9 +2174,9 @@ video {
 /*.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/utility\.jpg\'\)\]{*/
 /*  background-image: url('../images/utility.jpg') !important;*/
 /*}*/
-/*.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/services\.jpg\'\)\]{*/
-/*  background-image: url('../images/services.jpg') !important;*/
-/*}*/
+.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/services\.jpg\'\)\]{
+  background-image: url('../image/bg/services.jpg') !important;
+}
 /*.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/portfolio\/bg-inner\.jpg\'\)\]{*/
 /*  background-image: url('../images/portfolio/bg-inner.jpg') !important;*/
 /*}*/

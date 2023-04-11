@@ -53,7 +53,6 @@
                             @break
                     @endswitch
                 </div>
-
                 <div class="content mt-7">
                     <a href="{{route('service',['name'=>$service->url_name])}}" class="title h5 text-lg font-medium hover:text-indigo-600">{{$service->name}}</a>
                     <p class="text-slate-400 mt-3">{{$service->description}}</p>

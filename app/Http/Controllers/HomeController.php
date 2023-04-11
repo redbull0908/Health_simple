@@ -26,10 +26,8 @@ class HomeController extends Controller
 
     function service ($name) : View|Factory|Application
     {
-        $category = ServiceCategory::all()->where('url_name','like',$name)->first();
-        $name = $category->name;
+        $category = ServiceCategory::where('url_name','like',$name)->first();
         $services = Service::all()->where('id_service_category','=',$category->id);
-        dd($services);
-        return view('Home.services',compact('services','name'));
+        return view('Home.service',compact('services','category'));
     }
 }

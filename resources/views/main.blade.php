@@ -176,12 +176,11 @@
 
             @foreach($doctors as $doctor)
                 <div class="lg:col-span-3 md:col-span-6">
-                    <div
-                        class="team p-6 rounded-md border border-gray-100 group bg-white">
-                        <img src="{{asset('storage/'.$doctor->img)}}" class="h-24 w-24 rounded-full shadow-md"
+                    <div class="p-6 rounded-md border border-gray-100 group bg-white">
+                        <img src="{{asset('storage/'.$doctor->img)}}" class="h-32 w-32 m-auto rounded-full shadow-md"
                              alt="">
 
-                        <div class="content mt-4">
+                        <div class="content mt-4 text-center">
                             <a href="" class="text-lg font-medium hover:text-indigo-600 block">{{$doctor->full_name}}</a>
                             <span class="text-slate-400 block">{{$doctor->specialization}}</span>
 
