@@ -14,8 +14,8 @@ class HomeController extends Controller
 {
     function services_category (): Factory|View|Application
     {
-        $services_category = ServiceCategory::all();
-        return view('Home.services_category',compact('services_category'));
+        $services = ServiceCategory::all();
+        return view('Home.services',compact('services'));
     }
 
     function doctors (): View|Factory|Application
@@ -24,10 +24,12 @@ class HomeController extends Controller
         return view('Home.doctors',compact('doctors'));
     }
 
-    function service ($id) : View|Factory|Application
+    function service ($name) : View|Factory|Application
     {
-        $name = ServiceCategory::all()->where('id','=',$id)->first()->Name;
-        $services = Service::all()->where('id_service_category','=',$id);
-        return view('Home.service',compact('services','name'));
+        $category = ServiceCategory::all()->where('url_name','like',$name)->first();
+        $name = $category->name;
+        $services = Service::all()->where('id_service_category','=',$category->id);
+        dd($services);
+        return view('Home.services',compact('services','name'));
     }
 }

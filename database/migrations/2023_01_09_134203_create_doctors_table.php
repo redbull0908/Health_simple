@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('full_name');
-            $table->string('description');
+            $table->string('experience');
+            $table->string('specialization');
+            $table->string('category');
             $table->string('img')->nullable();
             $table->bigInteger('id_service_category')->unsigned();
             $table->foreign('id_service_category')->references('id')->on('service_categories');

@@ -20,77 +20,105 @@ class DatabaseSeeder extends Seeder
     {
         //Service_category
          \DB::table('service_categories')->insert([
-             'name'=>'Лабораторная диагностика',
-             'description'=>'Обширный спектр лабораторных услуг...',
-             'img'=>'Лабораторная_диагностика.jpg'
+             'name'=>'Офтальмология',
+             'description'=>'Лечение и профилактика болезней глаз...',
+             'url_name'=>'oftalmologia'
          ]);
+        \DB::table('service_categories')->insert([
+            'name'=>'Онкология',
+            'description'=>'По данным статистики, сегодня около 90% злокачественных образований поддаются лечению.',
+            'url_name'=>'onkologia'
+        ]);
+        \DB::table('service_categories')->insert([
+            'name'=>'Лабораторная диагностика',
+            'description'=>'Обширный спектр лабораторных услуг...',
+            'url_name'=>'laboratornaya_diagnostica'
+        ]);
         \DB::table('service_categories')->insert([
             'name'=>'Узи',
             'description'=>'УЗИ является одним из самых результативных методов диагностики в современной медицине на сегодняшний...',
-            'img'=>'Узи.jpg'
+            'url_name'=>'uzi'
+        ]);
+        \DB::table('service_categories')->insert([
+            'name'=>'Урология',
+            'description'=>'В медицинском центре Вам окажут профессиональную помощь лучшие специалисты в области урологи.',
+            'url_name'=>'urologia'
+        ]);
+        \DB::table('service_categories')->insert([
+            'name'=>'Гинекология',
+            'description'=>'Заботе о женщине и ее здоровью в нашем центре уделяется большое внимание.',
+            'url_name'=>'ginekologia'
         ]);
 
         //Services
         \DB::table('services')->insert([
             'name'=>'Общий анализ мочи',
             'price'=>3.7,
-            'id_service_category'=>1,
+            'id_service_category'=>3,
         ]);
         \DB::table('services')->insert([
             'name'=>'Забор крови из вены для всего спектра гемотологических исследований (Общий анализ крови)',
             'price'=>3.39,
-            'id_service_category'=>1,
+            'id_service_category'=>3,
         ]);
         \DB::table('services')->insert([
             'name'=>'Взятие крови из пальца для определения глюкозы',
             'price'=>1.28,
-            'id_service_category'=>1,
+            'id_service_category'=>3,
         ]);
         \DB::table('services')->insert([
             'name'=>'Мочевой пузырь',
             'price'=>6.24,
-            'id_service_category'=>2,
+            'id_service_category'=>4,
         ]);
         \DB::table('services')->insert([
             'name'=>'Селезенка',
             'price'=>6.24,
-            'id_service_category'=>2,
+            'id_service_category'=>4,
         ]);
         \DB::table('services')->insert([
             'name'=>'Щитовидная железа с лимфатическими поверхностными узлами',
             'price'=>12.17,
-            'id_service_category'=>2,
+            'id_service_category'=>4,
         ]);
         \DB::table('services')->insert([
             'name'=>'Почки и надпочечники',
             'price'=>12.17,
-            'id_service_category'=>2,
+            'id_service_category'=>4,
         ]);
 
         //Doctors
         \DB::table('doctors')->insert([
             'full_name'=>'Иванов Иван',
-            'description'=>'22 года опыта',
-            'id_service_category'=>1,
-            'img'=>'ivanov.png'
+            'experience'=>'22 года',
+            'id_service_category'=>5,
+            'category'=>'высшая',
+            'specialization'=>'Врач-уролог',
+            'img'=>'uploads/image/doctors/ivanov.png'
         ]);
         \DB::table('doctors')->insert([
             'full_name'=>'Игнатьева Тамара',
-            'description'=>'10 лет опыта',
-            'id_service_category'=>1,
-            'img'=>'ignateva.jpg'
+            'experience'=>'10 лет',
+            'id_service_category'=>6,
+            'specialization'=>'Врач-акушер-гинеколог',
+            'category'=>'первая',
+            'img'=>'uploads/image/doctors/ignateva.jpg'
         ]);
         \DB::table('doctors')->insert([
             'full_name'=>'Александров Алексей',
-            'description'=>'15 лет опыта',
-            'id_service_category'=>2,
-            'img'=>'alexandrov.jpg'
+            'experience'=>'15 лет',
+            'id_service_category'=>5,
+            'category'=>'первая',
+            'specialization'=>'Врач-уролог',
+            'img'=>'uploads/image/doctors/alexandrov.jpg'
         ]);
         \DB::table('doctors')->insert([
             'full_name'=>'Кубарева Анна',
-            'description'=>'7 лет опыта',
-            'id_service_category'=>2,
-            'img'=>'kubareva.jpg'
+            'experience'=>'7 лет',
+            'id_service_category'=>6,
+            'specialization'=>'Врач-акушер-гинеколог',
+            'category'=>'первая',
+            'img'=>'uploads/image/doctors/kubareva.jpg'
         ]);
 
         //Roles
@@ -132,9 +160,9 @@ class DatabaseSeeder extends Seeder
             'full_name' => 'Иваньков Алексей Федорович',
             'sex' => 'Мужской',
             'password' => \Hash::make('&Aa1234'),
-            'birthday' => \Date::make('17-02-2014'),
+            'birthday' => \Date::make('17-02-2010'),
             'tel_number' => '446752384',
-            'img'=>'user123.jpg',
+            'img'=>null,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ])->assignRole('user')->givePermissionTo($view_profile);

@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('service_categories', function (Blueprint $table) {
             $table->bigIncrements('id')->nullable(false);
             $table->string('name');
+            $table->string('url_name');
             $table->string('description');
-            $table->string('img')->nullable();
         });
     }
 
