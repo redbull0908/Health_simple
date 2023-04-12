@@ -57,6 +57,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         //Services
+        //Laboratoria
         \DB::table('services')->insert([
             'name'=>'Общий анализ мочи',
             'price'=>3.7,
@@ -72,6 +73,22 @@ class DatabaseSeeder extends Seeder
             'price'=>1.28,
             'id_service_category'=>3,
         ]);
+        \DB::table('services')->insert([
+            'name'=>'Исследование соскобов и отделяемого с поверхности опухолевидных или пигментных образований кожи',
+            'price'=>5.26,
+            'id_service_category'=>3,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Трехстаканная проба',
+            'price'=>2.59,
+            'id_service_category'=>3,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Забор крови из вены "Гликированный гемоглобин"',
+            'price'=>4.76,
+            'id_service_category'=>3,
+        ]);
+        //Uzi
         \DB::table('services')->insert([
             'name'=>'Мочевой пузырь',
             'price'=>6.24,
@@ -92,6 +109,143 @@ class DatabaseSeeder extends Seeder
             'price'=>12.17,
             'id_service_category'=>4,
         ]);
+        \DB::table('services')->insert([
+            'name'=>'Печень, желчный пузырь с определением функции',
+            'price'=>15.00,
+            'id_service_category'=>4,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'УЗИ суставов с окружающими их мягкими тканями (парные) и дуплексным сканированием сосудов одного анатомического региона',
+            'price'=>28.57,
+            'id_service_category'=>4,
+        ]);
+        //Oftalmologia
+        \DB::table('services')->insert([
+            'name'=>'Первичный прием врача - офтальмолога',
+            'price'=>29.38,
+            'id_service_category'=>1,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Повторный прием врача - офтальмолога',
+            'price'=>23.29,
+            'id_service_category'=>1,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Промывание слезных путей',
+            'price'=>22.66,
+            'id_service_category'=>1,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Снятие конъюнктивального шва',
+            'price'=>22.66,
+            'id_service_category'=>1,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Подбор очковых линз',
+            'price'=>22.00,
+            'id_service_category'=>1,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Удаление инородных тел из конъюнктивальной полости и\или роговицы',
+            'price'=>22.66,
+            'id_service_category'=>1,
+        ]);
+
+        //Onkologia
+        \DB::table('services')->insert([
+            'name'=>'Первичный прием врача - онколога',
+            'price'=>29.38,
+            'id_service_category'=>2,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Повторный прием врача - онколога',
+            'price'=>23.29,
+            'id_service_category'=>2,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Электрорадиокоагуляция невусов за 1 мм',
+            'price'=>13.12,
+            'id_service_category'=>2,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Электрокоагуляция доброкачественных сосудистых новообразований кожи и красной каймы губ от 0,5 см до 1 см',
+            'price'=>17.12,
+            'id_service_category'=>2,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Электрорадиокоагуляция гипертрофических рубцов после переносимых воспалительных заболеваний кожи за 1 см',
+            'price'=>17.12 ,
+            'id_service_category'=>2,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Электрорадиокоагуляция доброкачественных новообразований кожи до 0,5 см',
+            'price'=>17.12,
+            'id_service_category'=>2,
+        ]);
+
+        //Urologia
+        \DB::table('services')->insert([
+            'name'=>'Первичный прием врача - уролога',
+            'price'=>30.43,
+            'id_service_category'=>5,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Повторный прием врача - уролога',
+            'price'=>24.43,
+            'id_service_category'=>5,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Взятие мазка из уретры',
+            'price'=>12.04,
+            'id_service_category'=>5,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Инстилляция мочевого пузыря',
+            'price'=>44.32,
+            'id_service_category'=>5,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Блокада по Клепичу',
+            'price'=>16.70 ,
+            'id_service_category'=>5,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Уретроскопия',
+            'price'=>34.22,
+            'id_service_category'=>5,
+        ]);
+
+        //Ginekologia
+        \DB::table('services')->insert([
+            'name'=>'Первичный прием врача-акушера-гинеколога',
+            'price'=>28.28,
+            'id_service_category'=>6,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Повторный прием врача-акушера-гинеколога',
+            'price'=>19.10,
+            'id_service_category'=>6,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Аспирационная биопсия из полости матки',
+            'price'=>24.24,
+            'id_service_category'=>6,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Внутриматочная инфузия обогащенной тромбоцитами плазмы',
+            'price'=>137.64,
+            'id_service_category'=>6,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Забор мазка на исследование',
+            'price'=>3.80 ,
+            'id_service_category'=>6,
+        ]);
+        \DB::table('services')->insert([
+            'name'=>'Коагуляция эрозии шейки матки радиоволновым методом',
+            'price'=>31.74,
+            'id_service_category'=>6,
+        ]);
 
         //Doctors
         \DB::table('doctors')->insert([
@@ -110,22 +264,6 @@ class DatabaseSeeder extends Seeder
             'category'=>'первая',
             'img'=>'uploads/image/doctors/ignateva.jpg'
         ]);
-        \DB::table('doctors')->insert([
-            'full_name'=>'Александров Алексей',
-            'experience'=>'15 лет',
-            'id_service_category'=>5,
-            'category'=>'первая',
-            'specialization'=>'Врач-уролог',
-            'img'=>'uploads/image/doctors/alexandrov.jpg'
-        ]);
-        \DB::table('doctors')->insert([
-            'full_name'=>'Кубарева Анна',
-            'experience'=>'7 лет',
-            'id_service_category'=>6,
-            'specialization'=>'Врач-акушер-гинеколог',
-            'category'=>'первая',
-            'img'=>'uploads/image/doctors/kubareva.jpg'
-        ]);
 
         \DB::table('doctors')->insert([
             'full_name'=>'Волковская Тамара',
@@ -137,12 +275,76 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \DB::table('doctors')->insert([
+            'full_name'=>'Александров Алексей',
+            'experience'=>'15 лет',
+            'id_service_category'=>5,
+            'category'=>'первая',
+            'specialization'=>'Врач-уролог',
+            'img'=>'uploads/image/doctors/alexandrov.jpg'
+        ]);
+
+        \DB::table('doctors')->insert([
+            'full_name'=>'Кубарева Анна',
+            'experience'=>'7 лет',
+            'id_service_category'=>6,
+            'specialization'=>'Врач-акушер-гинеколог',
+            'category'=>'первая',
+            'img'=>'uploads/image/doctors/kubareva.jpg'
+        ]);
+
+        \DB::table('doctors')->insert([
             'full_name'=>'Кравец Ольга',
             'experience'=>'15 лет',
             'id_service_category'=>3,
             'specialization'=>'Врач клинической лабораторной диагностики',
             'category'=>'первая',
             'img'=>'uploads/image/doctors/kravec_olga.jpg'
+        ]);
+
+
+        \DB::table('doctors')->insert([
+            'full_name'=>'Долматова Анна',
+            'experience'=>'18 лет',
+            'id_service_category'=>2,
+            'specialization'=>'Врач-онколог-хирург',
+            'category'=>'высшая',
+            'img'=>'uploads/image/doctors/dolmatova_anna.jpg'
+        ]);
+
+        \DB::table('doctors')->insert([
+            'full_name'=>'Дегтярев Андрей',
+            'experience'=>'30 лет',
+            'id_service_category'=>2,
+            'specialization'=>'врач-онколог-гинеколог',
+            'category'=>'высшая, профессор, доктор медицинских наук',
+            'img'=>'uploads/image/doctors/degterev_andrey.jpg'
+        ]);
+
+        \DB::table('doctors')->insert([
+            'full_name'=>'Протасев Вячеслав',
+            'experience'=>'20 лет',
+            'id_service_category'=>2,
+            'specialization'=>'Врач-онколог-хирург',
+            'category'=>'высшая',
+            'img'=>'uploads/image/doctors/protasev_slava.jpg'
+        ]);
+
+        \DB::table('doctors')->insert([
+            'full_name'=>'Федорова Юлия',
+            'experience'=>'24 года',
+            'id_service_category'=>1,
+            'specialization'=>'Врач-офтальмолог',
+            'category'=>'первая',
+            'img'=>'uploads/image/doctors/fedorova_yulia.jpg'
+        ]);
+
+        \DB::table('doctors')->insert([
+            'full_name'=>'Дроздова Екатерина',
+            'experience'=>'27 лет',
+            'id_service_category'=>1,
+            'specialization'=>'Врач-офтальмолог',
+            'category'=>'высшая',
+            'img'=>'uploads/image/doctors/drozdova_ekaterina.jpg'
         ]);
 
         //Roles

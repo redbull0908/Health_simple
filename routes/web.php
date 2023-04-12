@@ -20,7 +20,7 @@ Route::get('/', [MainController::class , 'main' ])->name('main');
 //home
 Route::controller(HomeController::class)->group(function () {
     Route::get('/services', 'services_category')->name('services');
-//    Route::get('/our_specialists', 'doctors')->name('doctors');
+    Route::get('/our_specialists', 'doctors')->name('doctors');
     Route::get('/services/{name}', 'service')->name('service');
 });
 ////account

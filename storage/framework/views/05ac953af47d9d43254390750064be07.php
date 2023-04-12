@@ -7,15 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="{{asset('image/icon/favicon.png')}}" type="image/png">
+    <link rel="shortcut icon" href="<?php echo e(asset('image/icon/favicon.png')); ?>" type="image/png">
     <!-- Css -->
-    <link href="{{asset("css/tiny-slider.css")}}" rel="stylesheet">
-    <link href="{{asset("css/tobii.min.css")}}" rel="stylesheet">
+    <link href="<?php echo e(asset("css/tiny-slider.css")); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset("css/tobii.min.css")); ?>" rel="stylesheet">
     <!-- Main Css -->
-    <link href="{{asset("css/line.css")}}" rel="stylesheet">
-    <link href="{{asset("css/icons.css")}}" rel="stylesheet">
-    <link href="{{asset("css/tailwind.css")}}" rel="stylesheet">
-    <title>{{$title}}</title>
+    <link href="<?php echo e(asset("css/line.css")); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset("css/icons.css")); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset("css/tailwind.css")); ?>" rel="stylesheet">
+    <title><?php echo e($title); ?></title>
 </head>
 
 <body class="font-nunito text-base text-black dark:text-white dark:bg-slate-900">
@@ -34,12 +34,12 @@
 <nav id="topnav" class="defaultscroll is-sticky">
     <div class="container">
         <!-- Logo container-->
-        <a class="logo pl-0" href="{{route('main')}}">
+        <a class="logo pl-0" href="<?php echo e(route('main')); ?>">
                 <span class="inline-block dark:hidden">
-                    <img src="{{asset("image/icon/logo-light.png")}}" class="l-dark" height="24" alt="">
-                    <img src="{{asset("image/icon/logo-dark.png")}}" class="l-light" height="24" alt="">
+                    <img src="<?php echo e(asset("image/icon/logo-light.png")); ?>" class="l-dark" height="24" alt="">
+                    <img src="<?php echo e(asset("image/icon/logo-dark.png")); ?>" class="l-light" height="24" alt="">
                 </span>
-            <img src="{{asset("image/icon/logo-light.png")}}" height="24" class="hidden dark:inline-block" alt="">
+            <img src="<?php echo e(asset("image/icon/logo-light.png")); ?>" height="24" class="hidden dark:inline-block" alt="">
         </a>
 
         <!-- End Logo container-->
@@ -63,11 +63,11 @@
         <div id="navigation">
             <!-- Navigation Menu-->
             <ul class="navigation-menu nav-light">
-                <li><a href="{{route('main')}}" class="sub-menu-item">Главная</a></li>
+                <li><a href="<?php echo e(route('main')); ?>" class="sub-menu-item">Главная</a></li>
 
-                <li><a href="{{route('services')}}" class="sub-menu-item">Услуги и цены</a></li>
+                <li><a href="<?php echo e(route('services')); ?>" class="sub-menu-item">Услуги и цены</a></li>
 
-                <li><a href="{{route('doctors')}}" class="sub-menu-item">Врачи</a></li>
+                <li><a href="<?php echo e(route('doctors')); ?>" class="sub-menu-item">Врачи</a></li>
 
                 <li><a href="#" class="sub-menu-item">Контакты</a></li>
 
@@ -81,8 +81,8 @@
 </nav><!--end header-->
 <!-- End Navbar -->
 
-{{--Content--}}
-@yield('content')
+
+<?php echo $__env->yieldContent('content'); ?>
 
 <!-- Footer Start -->
 <footer class="footer bg-dark-footer relative text-gray-200 dark:text-gray-200">
@@ -97,10 +97,10 @@
                                 <li><a href=""
                                        class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                             class="uil uil-angle-right-b me-1"></i> Контакты</a></li>
-                                <li class="mt-[10px]"><a href="{{route('services')}}"
+                                <li class="mt-[10px]"><a href="<?php echo e(route('services')); ?>"
                                                          class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                             class="uil uil-angle-right-b me-1"></i> Услуги и цены</a></li>
-                                <li class="mt-[10px]"><a href="{{route('doctors')}}"
+                                <li class="mt-[10px]"><a href="<?php echo e(route('doctors')); ?>"
                                                          class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                             class="uil uil-angle-right-b me-1"></i> Врачи</a></li>
                                 <li class="mt-[10px]"><a href=""
@@ -142,12 +142,13 @@
 <!-- Back to top -->
 
 <!-- JAVASCRIPTS -->
-<script src="{{asset("js/tiny-slider.js")}}"></script>
-<script src="{{asset("js/tobii.min.js")}}"></script>
-<script src="{{asset("js/feather.min.js")}}"></script>
-<script src="{{asset("js/plugins.init.js")}}"></script>
-<script src="{{asset("js/app.js")}}"></script>
+<script src="<?php echo e(asset("js/tiny-slider.js")); ?>"></script>
+<script src="<?php echo e(asset("js/tobii.min.js")); ?>"></script>
+<script src="<?php echo e(asset("js/feather.min.js")); ?>"></script>
+<script src="<?php echo e(asset("js/plugins.init.js")); ?>"></script>
+<script src="<?php echo e(asset("js/app.js")); ?>"></script>
 <!-- JAVASCRIPTS -->
 </body>
 
 </html>
+<?php /**PATH E:\PHP\OSPanel\domains\Health-Test\resources\views/layouts/index.blade.php ENDPATH**/ ?>
