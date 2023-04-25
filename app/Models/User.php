@@ -11,7 +11,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles ;
 
     /**
      * The attributes that are mass assignable.
@@ -20,11 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'login',
-        'full_name',
-        'tel_number',
-        'password',
-        'birthday',
-        'sex'
+        'tel_number'
     ];
 
     /**

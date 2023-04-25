@@ -20,10 +20,10 @@
  *     07.  Gallery filter js    * (For Portfolio pages)
  *     08.  Tobii lightbox       * (For Portfolio pages)
  *     09.  CK Editor            * (For Compose mail)
- *     10.  Fade Animation       * 
- *     11.  Typed Text animation (animation) * 
- *     12.  Validation Form      * 
- *     13.  Switcher Pricing Plan* 
+ *     10.  Fade Animation       *
+ *     11.  Typed Text animation (animation) *
+ *     12.  Validation Form      *
+ *     13.  Switcher Pricing Plan*
  *     14.  Cookies Policy       *
  *     15.  Back Button          *
  *     16.  Particles            *
@@ -33,7 +33,7 @@
  *          3. Carousel          *
  *          4. Accordions        *
  ================================*/
-         
+
 //=========================================//
 /*            01) Tiny slider              */
 //=========================================//
@@ -362,16 +362,16 @@ try {
     function countDownTimer(start, targetDOM) {
         // Get todays date and time
         var now = new Date().getTime();
-        
+
         // Find the distance between now and the count down date
         var distance = start - now;
-        
+
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
+
         // add 0 at the beginning if days, hours, minutes, seconds values are less than 10
         days = (days < 10) ? "0" + days : days;
         hours = (hours < 10) ? "0" + hours : hours;
@@ -380,8 +380,8 @@ try {
 
         // Output the result in an element with auction-item-x"
         document.querySelector("#" + targetDOM).textContent = days + " : " + hours + " : " + minutes + " : " + seconds;
-        
-        // If the count down is over, write some text 
+
+        // If the count down is over, write some text
         if (distance < 0) {
             // clearInterval();
             document.querySelector("#" + targetDOM).textContent = "00 : 00 : 00 : 00";
@@ -418,7 +418,7 @@ try {
     setInterval(function(){ countDownTimer(cdd9, "auction-item-9"); }, 1000);
 
 } catch (error) {
-    
+
 }
 
 try {
@@ -798,9 +798,9 @@ try {
     function el(selector) { return document.querySelector(selector) }
     function els(selector) { return document.querySelectorAll(selector) }
     function on(selector, event, action) { els(selector).forEach(e => e.addEventListener(event, action)) }
-    function cookie(name) { 
+    function cookie(name) {
         let c = document.cookie.split('; ').find(cookie => cookie && cookie.startsWith(name+'='))
-        return c ? c.split('=')[1] : false; 
+        return c ? c.split('=')[1] : false;
     }
 
     /* popup button hanler */
@@ -814,7 +814,7 @@ try {
         el('.cookie-popup').classList.add('cookie-popup-not-accepted');
     }
 } catch (error) {
-    
+
 }
 
 //=========================================//
@@ -827,7 +827,7 @@ document.getElementsByClassName("back-button")[0]?.addEventListener("click", (e)
       }
 })
 
-  
+
 //=========================================//
 /*            16) Particles                */
 //=========================================//
@@ -944,7 +944,7 @@ try {
         "retina_detect": true
     });
 } catch (error) {
-    
+
 }
 
 //=========================================//
@@ -957,7 +957,7 @@ try {
         var singleCategories = new Choices('#choices-type');
     }
 } catch (error) {
-    
+
 }
 try {
     var choicescatagory = new Choices('#choices-catagory');
@@ -970,7 +970,7 @@ try {
         var choicesmaxs = new Choices('#choices-max-price');
     }
 } catch (error) {
-    
+
 }
 
 //=========================================//
@@ -985,7 +985,7 @@ try {
         inactiveClasses: 'hover:text-indigo-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800',
         onShow: () => { }
     }
-    
+
     class Tabs {
         constructor(items = [], options = {}) {
             this._items = items
@@ -993,17 +993,17 @@ try {
             this._options = { ...Default, ...options }
             this._init()
         }
-    
+
         _init() {
             if (this._items.length) {
                 // set the first tab as active if not set by explicitly
                 if (!this._activeTab) {
                     this._setActiveTab(this._items[0])
                 }
-    
+
                 // force show the first default tab
                 this.show(this._activeTab.id, true)
-    
+
                 // show tab content based on click
                 this._items.map(tab => {
                     tab.triggerEl.addEventListener('click', () => {
@@ -1012,27 +1012,27 @@ try {
                 })
             }
         }
-    
+
         getActiveTab() {
             return this._activeTab
         }
-    
+
         _setActiveTab(tab) {
             this._activeTab = tab
         }
-    
+
         getTab(id) {
             return this._items.filter(t => t.id === id)[0]
         }
-    
+
         show(id, forceShow = false) {
             const tab = this.getTab(id)
-    
+
             // don't do anything if already active
             if (tab === this._activeTab && !forceShow) {
                 return
             }
-    
+
             // hide other tabs
             this._items.map(t => {
                 if (t !== tab) {
@@ -1042,26 +1042,26 @@ try {
                     t.triggerEl.setAttribute('aria-selected', false)
                 }
             })
-    
+
             // show active tab
             tab.triggerEl.classList.add(...this._options.activeClasses.split(" "));
             tab.triggerEl.classList.remove(...this._options.inactiveClasses.split(" "));
             tab.triggerEl.setAttribute('aria-selected', true)
             tab.targetEl.classList.remove('hidden')
-    
+
             this._setActiveTab(tab)
-    
+
             // callback function
             this._options.onShow(this, tab)
         }
-    
+
     }
-    
+
     window.Tabs = Tabs;
-    
+
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-tabs-toggle]').forEach(triggerEl => {
-    
+
             const tabElements = []
             let defaultTabId = null
             triggerEl.querySelectorAll('[role="tab"]').forEach(el => {
@@ -1072,7 +1072,7 @@ try {
                     targetEl: document.querySelector(el.getAttribute('data-tabs-target'))
                 }
                 tabElements.push(tab)
-    
+
                 if (isActive) {
                     defaultTabId = tab.id
                 }
@@ -1083,7 +1083,7 @@ try {
         })
     })
 } catch (error) {
-    
+
 }
 
 //********* 2) Modals ********//
@@ -1102,13 +1102,13 @@ try {
             this._isHidden = true
             this._init()
         }
-    
+
         _init() {
             this._getPlacementClasses().map(c => {
                 this._targetEl.classList.add(c)
             })
         }
-    
+
         _createBackdrop() {
             if(this._isHidden) {
                 const backdropEl = document.createElement('div');
@@ -1117,16 +1117,16 @@ try {
                 document.querySelector('body').append(backdropEl);
             }
         }
-    
+
         _destroyBackdropEl() {
             if (!this._isHidden) {
                 document.querySelector('[modal-backdrop]').remove();
             }
         }
-    
+
         _getPlacementClasses() {
             switch (this._options.placement) {
-    
+
                 // top
                 case 'top-left':
                     return ['justify-start', 'items-start']
@@ -1134,7 +1134,7 @@ try {
                     return ['justify-center', 'items-start']
                 case 'top-right':
                     return ['justify-end', 'items-start']
-    
+
                 // center
                 case 'center-left':
                     return ['justify-start', 'items-center']
@@ -1142,7 +1142,7 @@ try {
                     return ['justify-center', 'items-center']
                 case 'center-right':
                     return ['justify-end', 'items-center']
-    
+
                 // bottom
                 case 'bottom-left':
                     return ['justify-start', 'items-end']
@@ -1150,23 +1150,23 @@ try {
                     return ['justify-center', 'items-end']
                 case 'bottom-right':
                     return ['justify-end', 'items-end']
-    
+
                 default:
                     return ['justify-center', 'items-center']
             }
         }
-    
+
         toggle() {
             if (this._isHidden) {
                 this.show()
             } else {
                 this.hide()
             }
-    
+
             // callback function
             this._options.onToggle(this)
         }
-    
+
         show() {
             this._targetEl.classList.add('flex')
             this._targetEl.classList.remove('hidden')
@@ -1175,11 +1175,11 @@ try {
             this._targetEl.removeAttribute('aria-hidden')
             this._createBackdrop()
             this._isHidden = false
-    
+
             // callback function
             this._options.onShow(this)
         }
-    
+
         hide() {
             this._targetEl.classList.add('hidden')
             this._targetEl.classList.remove('flex')
@@ -1188,35 +1188,35 @@ try {
             this._targetEl.removeAttribute('role')
             this._destroyBackdropEl()
             this._isHidden = true
-    
+
             // callback function
             this._options.onHide(this)
         }
-    
+
     }
-    
+
     window.Modal = Modal;
-    
+
     const getModalInstance = (id, instances) => {
         if (instances.some(modalInstance => modalInstance.id === id)) {
             return instances.find(modalInstance => modalInstance.id === id)
         }
         return false
     }
-    
+
     document.addEventListener('DOMContentLoaded', () => {
         let modalInstances = []
         document.querySelectorAll('[data-modal-toggle]').forEach(el => {
             const modalId = el.getAttribute('data-modal-toggle');
             const modalEl = document.getElementById(modalId);
             const placement = modalEl.getAttribute('data-modal-placement')
-    
+
             if (modalEl) {
                 if (!modalEl.hasAttribute('aria-hidden') && !modalEl.hasAttribute('aria-modal')) {
                     modalEl.setAttribute('aria-hidden', 'true');
                 }
             }
-    
+
             let modal = null
             if (getModalInstance(modalId, modalInstances)) {
                 modal = getModalInstance(modalId, modalInstances)
@@ -1230,14 +1230,14 @@ try {
                     object: modal
                 })
             }
-    
+
             el.addEventListener('click', () => {
                 modal.toggle()
             })
         })
     })
 } catch (error) {
-    
+
 }
 
 //******** 3) Carousel********//
@@ -1254,7 +1254,7 @@ try {
         onPrev: () => { },
         onChange: () => { }
     }
-    
+
     class Carousel {
         constructor(items = [], options = {}) {
             this._items = items
@@ -1264,9 +1264,9 @@ try {
             this._interval = null
             this._init()
             this.cycle()
-    
+
         }
-    
+
         /**
          * Initialise carousel and items based on active one
          */
@@ -1274,28 +1274,28 @@ try {
             this._items.map(item => {
                 item.el.classList.add('absolute', 'inset-0', 'transition-all', 'transform')
             })
-    
+
             // if no active item is set then first position is default
             if (this._getActiveItem()) {
                 this.slideTo(this._getActiveItem().position)
             } else {
                 this.slideTo(0)
             }
-    
+
             this._indicators.map((indicator, position) => {
                 indicator.el.addEventListener('click', () => {
                     this.slideTo(position)
                 })
             })
         }
-    
+
         getItem(position) {
             return this._items[position]
         }
-    
+
         /**
          * Slide to the element based on id
-         * @param {*} position 
+         * @param {*} position
          */
         slideTo(position) {
             const nextItem = this._items[position]
@@ -1310,73 +1310,73 @@ try {
                 this.pause()
                 this.cycle()
             }
-    
+
             this._options.onChange(this)
         }
-    
+
         /**
          * Based on the currently active item it will go to the next position
          */
         next() {
             const activeItem = this._getActiveItem()
             let nextItem = null
-    
+
             // check if last item
             if (activeItem.position === this._items.length - 1) {
                 nextItem = this._items[0]
             } else {
                 nextItem = this._items[activeItem.position + 1]
             }
-    
+
             this.slideTo(nextItem.position)
-    
+
             // callback function
             this._options.onNext(this)
         }
-    
+
         /**
          * Based on the currently active item it will go to the previous position
          */
         prev() {
             const activeItem = this._getActiveItem()
             let prevItem = null
-    
+
             // check if first item
             if (activeItem.position === 0) {
                 prevItem = this._items[this._items.length - 1]
             } else {
                 prevItem = this._items[activeItem.position - 1]
             }
-    
+
             this.slideTo(prevItem.position)
-    
+
             // callback function
             this._options.onPrev(this)
         }
-    
+
         /**
          * This method applies the transform classes based on the left, middle, and right rotation carousel items
-         * @param {*} rotationItems 
+         * @param {*} rotationItems
          */
         _rotate(rotationItems) {
             // reset
             this._items.map(item => {
                 item.el.classList.add('hidden')
             })
-    
+
             // left item (previously active)
             rotationItems.left.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden', 'z-20')
             rotationItems.left.el.classList.add('-translate-x-full', 'z-10')
-    
+
             // currently active item
             rotationItems.middle.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden', 'z-10')
             rotationItems.middle.el.classList.add('translate-x-0', 'z-20')
-    
+
             // right item (upcoming active)
             rotationItems.right.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden', 'z-20')
             rotationItems.right.el.classList.add('translate-x-full', 'z-10')
         }
-    
+
         /**
          * Set an interval to cycle through the carousel items
          */
@@ -1385,28 +1385,28 @@ try {
                 this.next();
             }, this._options.interval)
         }
-    
+
         /**
          * Clears the cycling interval
          */
         pause() {
             clearInterval(this._interval);
         }
-    
+
         /**
          * Get the currently active item
          */
         _getActiveItem() {
             return this._activeItem
         }
-    
+
         /**
          * Set the currently active item and data attribute
-         * @param {*} position 
+         * @param {*} position
          */
         _setActiveItem(position) {
             this._activeItem = this._items[position]
-    
+
             // update the indicators if available
             if (this._indicators.length) {
                 this._indicators.map(indicator => {
@@ -1419,16 +1419,16 @@ try {
                 this._indicators[position].el.setAttribute('aria-current', 'true')
             }
         }
-    
+
     }
-    
+
     window.Carousel = Carousel;
-    
+
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-carousel]').forEach(carouselEl => {
             const interval = carouselEl.getAttribute('data-carousel-interval')
             const slide = carouselEl.getAttribute('data-carousel') === 'slide' ? true : false
-    
+
             const items = []
             let defaultPosition = 0
             if (carouselEl.querySelectorAll('[data-carousel-item]').length) {
@@ -1437,13 +1437,13 @@ try {
                         position: position,
                         el: carouselItemEl
                     })
-    
+
                     if (carouselItemEl.getAttribute('data-carousel-item') === 'active') {
                         defaultPosition = position
                     }
                 })
             }
-    
+
             const indicators = [];
             if (carouselEl.querySelectorAll('[data-carousel-slide-to]').length) {
                 [...carouselEl.querySelectorAll('[data-carousel-slide-to]')].map((indicatorEl) => {
@@ -1453,7 +1453,7 @@ try {
                     })
                 })
             }
-    
+
             const carousel = new Carousel(items, {
                 defaultPosition: defaultPosition,
                 indicators: {
@@ -1461,32 +1461,32 @@ try {
                 },
                 interval: interval ? interval : Default.interval
             })
-    
+
             if (slide) {
                 carousel.cycle();
             }
-    
+
             // check for controls
             const carouselNextEl = carouselEl.querySelector('[data-carousel-next]')
             const carouselPrevEl = carouselEl.querySelector('[data-carousel-prev]')
-    
+
             if (carouselNextEl) {
                 carouselNextEl.addEventListener('click', () => {
                     carousel.next()
                 })
             }
-    
+
             if (carouselPrevEl) {
                 carouselPrevEl.addEventListener('click', () => {
                     carousel.prev()
                 })
             }
-    
+
         })
     })
-    
+
 } catch (error) {
-    
+
 }
 
 //********4) Accordions********/
@@ -1499,37 +1499,37 @@ try {
         onClose: () => { },
         onToggle: () => { }
     }
-    
+
     class Accordion {
         constructor(items = [], options = {}) {
             this._items = items
             this._options = { ...Default, ...options }
             this._init()
         }
-    
+
         _init() {
             if (this._items.length) {
                 // show accordion item based on click
                 this._items.map(item => {
-    
+
                     if (item.active) {
                         this.open(item.id)
                     }
-    
+
                     item.triggerEl.addEventListener('click', () => {
                         this.toggle(item.id)
                     })
                 })
             }
         }
-    
+
         getItem(id) {
             return this._items.filter(item => item.id === id)[0]
         }
-    
+
         open(id) {
             const item = this.getItem(id)
-    
+
             // don't hide other accordions if always open
             if (!this._options.alwaysOpen) {
                 this._items.map(i => {
@@ -1539,7 +1539,7 @@ try {
                         i.targetEl.classList.add('hidden')
                         i.triggerEl.setAttribute('aria-expanded', false)
                         i.active = false
-    
+
                         // rotate icon if set
                         if (i.iconEl) {
                             i.iconEl.classList.remove('rotate-180')
@@ -1547,65 +1547,65 @@ try {
                     }
                 })
             }
-    
+
             // show active item
             item.triggerEl.classList.add(...this._options.activeClasses.split(" "))
             item.triggerEl.classList.remove(...this._options.inactiveClasses.split(" "))
             item.triggerEl.setAttribute('aria-expanded', true)
             item.targetEl.classList.remove('hidden')
             item.active = true
-    
+
             // rotate icon if set
             if (item.iconEl) {
                 item.iconEl.classList.add('rotate-180')
             }
-    
+
             // callback function
             this._options.onOpen(this, item)
         }
-    
+
         toggle(id) {
             const item = this.getItem(id)
-    
+
             if (item.active) {
                 this.close(id)
             } else {
                 this.open(id)
             }
-    
+
             // callback function
             this._options.onToggle(this, item)
         }
-    
+
         close(id) {
             const item = this.getItem(id)
-    
+
             item.triggerEl.classList.remove(...this._options.activeClasses.split(" "))
             item.triggerEl.classList.add(...this._options.inactiveClasses.split(" "))
             item.targetEl.classList.add('hidden')
             item.triggerEl.setAttribute('aria-expanded', false)
             item.active = false
-    
+
             // rotate icon if set
             if (item.iconEl) {
                 item.iconEl.classList.remove('rotate-180')
             }
-    
+
             // callback function
             this._options.onClose(this, item)
         }
-    
+
     }
-    
+
     window.Accordion = Accordion;
-    
+
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-accordion]').forEach(accordionEl => {
-    
+
             const alwaysOpen = accordionEl.getAttribute('data-accordion')
             const activeClasses = accordionEl.getAttribute('data-active-classes')
             const inactiveClasses = accordionEl.getAttribute('data-inactive-classes')
-    
+
             const items = []
             accordionEl.querySelectorAll('[data-accordion-target]').forEach(el => {
                 const item = {
@@ -1617,7 +1617,7 @@ try {
                 }
                 items.push(item)
             })
-    
+
             new Accordion(items, {
                 alwaysOpen: alwaysOpen === 'open' ? true : false,
                 activeClasses: activeClasses ? activeClasses : Default.activeClasses,
@@ -1626,7 +1626,7 @@ try {
         })
     })
 } catch (error) {
-    
+
 }
 
 //=========================================//
@@ -1634,11 +1634,12 @@ try {
 //=========================================//
 try {
     var loadFile = function (event) {
-        
-        var image = document.getElementById(event.target.name);
+
+        let image = document.getElementById(event.target.name);
         image.src = URL.createObjectURL(event.target.files[0]);
+        document.forms[0].submit();
     };
-      
+
 } catch (error) {
-    
+
 }

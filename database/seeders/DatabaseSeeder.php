@@ -254,7 +254,7 @@ class DatabaseSeeder extends Seeder
             'id_service_category'=>5,
             'category'=>'высшая',
             'specialization'=>'Врач-уролог',
-            'img'=>'uploads/image/doctors/ivanov.png'
+            'img'=>'uploads/image/doctors/ivanov.jpg'
         ]);
         \DB::table('doctors')->insert([
             'full_name'=>'Игнатьева Тамара',
@@ -269,7 +269,7 @@ class DatabaseSeeder extends Seeder
             'full_name'=>'Волковская Тамара',
             'experience'=>'12 лет',
             'id_service_category'=>3,
-            'specialization'=>'Врач клинической лабораторной диагностики',
+            'specialization'=>'Врач лабораторной диагностики',
             'category'=>'высшая',
             'img'=>'uploads/image/doctors/volkovskaa_tamara.jpg'
         ]);
@@ -296,7 +296,7 @@ class DatabaseSeeder extends Seeder
             'full_name'=>'Кравец Ольга',
             'experience'=>'15 лет',
             'id_service_category'=>3,
-            'specialization'=>'Врач клинической лабораторной диагностики',
+            'specialization'=>'Врач лабораторной диагностики',
             'category'=>'первая',
             'img'=>'uploads/image/doctors/kravec_olga.jpg'
         ]);
@@ -316,7 +316,7 @@ class DatabaseSeeder extends Seeder
             'experience'=>'30 лет',
             'id_service_category'=>2,
             'specialization'=>'врач-онколог-гинеколог',
-            'category'=>'высшая, профессор, доктор медицинских наук',
+            'category'=>'высшая, профессор',
             'img'=>'uploads/image/doctors/degterev_andrey.jpg'
         ]);
 
@@ -345,6 +345,24 @@ class DatabaseSeeder extends Seeder
             'specialization'=>'Врач-офтальмолог',
             'category'=>'высшая',
             'img'=>'uploads/image/doctors/drozdova_ekaterina.jpg'
+        ]);
+
+        \DB::table('doctors')->insert([
+            'full_name'=>'Личева Анастасия',
+            'experience'=>'10 лет',
+            'id_service_category'=>4,
+            'specialization'=>'Врач ультразвуковой диагностики',
+            'category'=>'первая',
+            'img'=>'uploads/image/doctors/licheva_nasta.jpg'
+        ]);
+
+        \DB::table('doctors')->insert([
+            'full_name'=>'Сомова Екатерина',
+            'experience'=>'15 лет',
+            'id_service_category'=>4,
+            'specialization'=>'Врач ультразвуковой диагностики',
+            'category'=>'высшая',
+            'img'=>'uploads/image/doctors/somova_ekaterina.jpg'
         ]);
 
         //Roles
@@ -388,7 +406,6 @@ class DatabaseSeeder extends Seeder
             'password' => \Hash::make('&Aa1234'),
             'birthday' => \Date::make('17-02-2010'),
             'tel_number' => '446752384',
-            'img'=>null,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ])->assignRole('user')->givePermissionTo($view_profile);

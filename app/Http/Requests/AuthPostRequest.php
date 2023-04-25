@@ -26,7 +26,7 @@ class AuthPostRequest extends FormRequest
     {
         return [
             'login'=>'required',
-            'Password'=>'required'
+            'password'=>'required'
         ];
     }
 

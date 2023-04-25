@@ -69,10 +69,19 @@
 
                 <li><a href="<?php echo e(route('doctors')); ?>" class="sub-menu-item">Врачи</a></li>
 
-                <li><a href="#" class="sub-menu-item">Контакты</a></li>
-
-                <li><a href="#" class="sub-menu-item">Войти | Регистрация</a></li>
-
+                <li><a href="<?php echo e(route('contacts')); ?>" class="sub-menu-item">Контакты</a></li>
+                <?php if(auth()->guard()->guest()): ?>
+                <li><a href="<?php echo e(route('login')); ?>" class="sub-menu-item">Войти | Регистрация</a></li>
+                <?php endif; ?>
+                <?php if(\Spatie\Permission\PermissionServiceProvider::bladeMethodWrapper('hasRole', 'user')): ?>
+                <li class="has-submenu parent-parent-menu-item">
+                    <a href="javascript:void(0)"><?php echo e(Auth::user()->login); ?></a><span class="menu-arrow"></span>
+                    <ul class="submenu">
+                        <li><a href="<?php echo e(route('profile')); ?>" class="sub-menu-item">Профиль</a></li>
+                        <li><a href="#" class="sub-menu-item">Записаться на прием</a></li>
+                        <li><a href="<?php echo e(route('logout')); ?>" class="sub-menu-item">Выйти</a></li>
+                    </ul>
+                <?php endif; ?>
             </ul><!--end navigation menu-->
         </div><!--end navigation-->
     </div>
@@ -91,10 +100,24 @@
             <div class="col-span-12">
                 <div class="py-[60px] px-0">
                     <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
+                        <div class="lg:col-span-4 md:col-span-12">
+                            <a href="#" class="text-[22px] focus:outline-none">
+                                <img src="<?php echo e(asset('image/icon/logo-dark.png')); ?>" alt="">
+                            </a>
+                            <ul class="list-none mt-6">
+                                <li class="inline"><a href="tel:+375336962909" target="_blank" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-phone" title="Позвонить"></i></a></li>
+                                <li class="inline"><a href="mailto:kirillbugrimov1@gmail.com" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-envelope align-middle" title="Написать"></i></a></li>
+                                <li class="inline"><a href="https://github.com/redbull0908/Health_simple" target="_blank" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-github align-middle" title="Github"></i></a></li>
+                                <li class="inline"><a href="https://www.linkedin.com/in/kirill-bugrimov-879863224" target="_blank" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-linkedin" title="Linkedin"></i></a></li>
+                                <li class="inline"><a href="https://vk.com/kirill_bugrimov" target="_blank" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-vk align-middle" title="vkontakte"></i></a></li>
+                                <li class="inline"><a href="https://www.instagram.com/kirill.vse.skuril/" target="_blank" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-instagram align-middle" title="instagram"></i></a></li>
+                                <li class="inline"><a href="skype:live:.cid.8df272c51f9ae7b4?chat" target="_blank" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-skype align-middle" title="Skype"></i></a></li>
+                            </ul><!--end icon-->
+                        </div><!--end col-->
                         <div class="lg:col-span-3 md:col-span-4">
-                            <h5 class="tracking-[1px] text-gray-100 font-semibold">Здоровье - просто</h5>
+                            <h5 class="tracking-[1px] text-gray-100 font-semibold">Медицинский центр</h5>
                             <ul class="list-none footer-list mt-6">
-                                <li><a href=""
+                                <li><a href="<?php echo e(route('contacts')); ?>"
                                        class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                             class="uil uil-angle-right-b me-1"></i> Контакты</a></li>
                                 <li class="mt-[10px]"><a href="<?php echo e(route('services')); ?>"
@@ -103,11 +126,14 @@
                                 <li class="mt-[10px]"><a href="<?php echo e(route('doctors')); ?>"
                                                          class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                             class="uil uil-angle-right-b me-1"></i> Врачи</a></li>
-                                <li class="mt-[10px]"><a href=""
+                                <li class="mt-[10px]"><a href="#"
                                                          class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                            class="uil uil-angle-right-b me-1"></i> Запись на прием</a></li><li class="mt-[10px]"><a href=""
-                                                         class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                            class="uil uil-angle-right-b me-1"></i> Войти | Регистрация</a></li>
+                                            class="uil uil-angle-right-b me-1"></i> Запись на прием</a></li>
+                                <?php if(auth()->guard()->guest()): ?>
+                                    <li class="mt-[10px]"><a href="<?php echo e(route('login')); ?>"
+                                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
+                                                class="uil uil-angle-right-b me-1"></i> Войти | Регистрация</a></li>
+                                <?php endif; ?>
                             </ul>
                         </div><!--end col-->
 

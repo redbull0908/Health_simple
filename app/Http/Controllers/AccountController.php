@@ -23,19 +23,15 @@ class AccountController extends Controller
         if(Auth::check()){
             return redirect()->route('main');
         }
-        return view('Account.register');
+        return view('Account.sign_up');
     }
 
     public function save(RegisterPostRequest $request)
     {
         $user = new User();
-        $full_name = $request->surname . ' ' . $request->name . ' ' . $request->second_name;
         $user->login = $request->login;
-        $user->full_name = $full_name;
-        $user->tel_number = $request->phone_number;
-        $user->password = password_hash($request->Password, PASSWORD_DEFAULT);
-        $user->birthday = $request->date;
-        $user->sex = $request->sex;
+        $user->tel_number = $request->tel_number;
+        $user->password = password_hash($request->password, PASSWORD_DEFAULT);
         $user->created_at = Carbon::now();
         $user->updated_at = Carbon::now();
         $user->assignRole('user')->givePermissionTo('view_profile');
@@ -52,12 +48,12 @@ class AccountController extends Controller
         if(Auth::check()){
             return redirect()->route('main');
         }
-        return view('Account.login');
+        return view('Account.sign_in');
     }
 
     public function auth(AuthPostRequest $request): RedirectResponse
     {
-        if(Auth::attempt(['login'=>$request->login,'password'=>$request->Password],$request->remember)){
+        if(Auth::attempt(['login'=>$request->get('login'),'password'=>$request->get('password')],$request->get('remember'))){
             $request->session()->regenerate();
             return redirect()->route('main');
         }
@@ -77,7 +73,7 @@ class AccountController extends Controller
     }
 
     public function get_profile (){
-        return \view('user_profile');
+        return \view('Account.user_profile');
     }
 
     public function change_pas(Request $request){
@@ -94,7 +90,6 @@ class AccountController extends Controller
                 'min'=>'Пароль минимум из 6 символов.',
                 'current_password'=>'Неверный пароль.'
             ]);
-
                 $user = Auth::user();
                 $user->setAttribute('password', \Hash::make($request->password));
                 if ($user->save()) {
@@ -145,7 +140,7 @@ class AccountController extends Controller
     public function save_image (Request $request){
         $request->validate(
             [
-            'image'=>'mimes:webp,jpeg,png,jpg|required'
+            'profile-image'=>'mimes:webp,jpeg,png,jpg|required'
             ],
             [
             'required'=>'Вы не выбрали файл.',
@@ -153,13 +148,10 @@ class AccountController extends Controller
             ]);
         if($img = Auth::user()->img)
         \Storage::disk('public')->delete($img);
-         $path = $request->file('image')->store('uploads/image/users','public');
+         $path = $request->file('profile-image')->store('uploads/image/users','public');
          $user = Auth::user();
          $user->setAttribute('img',$path);
-         if($user->save())
-         {
-             return redirect('profile');
-         }
-        return redirect('profile')->withErrors('Не удалось загрузить файл');
+         $user->save();
+         return redirect()->back();
     }
 }

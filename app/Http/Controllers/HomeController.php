@@ -20,8 +20,10 @@ class HomeController extends Controller
 
     function doctors (): View|Factory|Application
     {
-        $doctors = Doctor::all();
-        return view('Home.doctors',compact('doctors'));
+        $doctors = \DB::table('doctors')->join('service_categories','doctors.id_service_category','=','service_categories.id')
+            ->select('doctors.full_name as full_name','doctors.img as img','doctors.experience as experience','doctors.specialization as specialization','service_categories.name as name','doctors.category as category')->get();
+        $category = ServiceCategory::select('name','url_name')->get();
+        return view('Home.doctors',compact('doctors','category'));
     }
 
     function service ($name) : View|Factory|Application

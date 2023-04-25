@@ -533,6 +533,14 @@ video {
   bottom: 0px !important;
   left: 0px !important;
 }
+
+.inset-50{
+    top: -50px !important;
+    right: -50px !important;
+    bottom: -50px !important;
+    left: -50px !important;
+}
+
 .inset-2{
   top: 0.5rem !important;
   right: 0.5rem !important;
@@ -1997,9 +2005,9 @@ video {
 .bg-opacity-50{
   --tw-bg-opacity: 0.5 !important;
 }
-/*.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/cta\.jpg\'\)\]{*/
-/*  background-image: url('../images/cta.jpg') !important;*/
-/*}*/
+.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/cta\.jpg\'\)\]{
+    background-image: url('../image/bg/auth_hospital.jpg') !important;
+}
 .bg-gradient-to-b{
   background-image: -webkit-gradient(linear, left top, left bottom, from(var(--tw-gradient-stops))) !important;
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops)) !important;
@@ -2007,9 +2015,9 @@ video {
 /*.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/blog\/bg\.jpg\'\)\]{*/
 /*  background-image: url('../images/blog/bg.jpg') !important;*/
 /*}*/
-/*.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/company\/aboutus\.jpg\'\)\]{*/
-/*  background-image: url('../images/company/aboutus.jpg') !important;*/
-/*}*/
+.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/company\/aboutus\.jpg\'\)\]{
+  background-image: url('../image/bg/contacts.jpg') !important;
+}
 /*.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/course\/cta\.jpg\'\)\]{*/
 /*  background-image: url('../images/course/cta.jpg') !important;*/
 /*}*/
@@ -2034,9 +2042,9 @@ video {
 /*.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/business\/bg03\.jpg\'\)\]{*/
 /*  background-image: url('../images/business/bg03.jpg') !important;*/
 /*}*/
-/*.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/team\.jpg\'\)\]{*/
-/*  background-image: url('../images/team.jpg') !important;*/
-/*}*/
+.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/team\.jpg\'\)\]{
+  background-image: url('../image/bg/bg_doctors.jpg') !important;
+}
 .bg-gradient-to-tl{
   background-image: -webkit-gradient(linear, right bottom, left top, from(var(--tw-gradient-stops))) !important;
   background-image: linear-gradient(to top left, var(--tw-gradient-stops)) !important;
@@ -2099,7 +2107,7 @@ video {
 /*  background-image: url('../images/gym/bg1.jpg') !important;*/
 /*}*/
 /*.bg-\[url\(\'\.\.\/\.\.\/assets\/images\/gym\/cta\.jpg\'\)\]{*/
-/*  background-image: url('../images/gym/cta.jpg') !important;*/
+/*  background-image: url('../image/bg/auth_hospital.jpg') !important;*/
 /*}*/
 .bg-\[url\(\'\.\.\/\.\.\/assets\/images\/hospital\/bg\.jpg\'\)\]{
   background-image: url('../image/bg/bg2.jpg') !important;
@@ -6033,6 +6041,11 @@ h1,  h2,  h3,  h4,  h5,  h6,  .h1,  .h2,  .h3,  .h4,  .h5,  .h6{
 .hover\:bg-indigo-700:hover{
   --tw-bg-opacity: 1 !important;
   background-color: rgb(67 56 202 / var(--tw-bg-opacity)) !important;
+}
+
+.active-btn {
+    --tw-bg-opacity: 1 !important;
+    background-color: rgb(67 56 202 / var(--tw-bg-opacity)) !important;
 }
 
 .hover\:bg-indigo-600:hover{

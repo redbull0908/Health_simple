@@ -45,11 +45,11 @@
 
                         <div class="content mt-6">
                             <h5 class="text-lg font-medium">Наш адрес</h5>
-                            <p class="text-slate-400 mt-3">Беларусь<br>г. Гомель<br>ул. пр-т Речицкий 69</p>
+                            <p class="text-slate-400 mt-3">Беларусь, г. Гомель<br>ул. пр-т Речицкий 69</p>
 
                             <div class="mt-5">
-                                <a href=""
-                                   class="btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">Показать на карте <i class="uil uil-arrow-right"></i></a>
+                                <a href="https://yandex.ru/map-widget/v1/?um=constructor%3Aa1092d34b18b04ff6f9c6b5a2e2277807cf92d14b8ccbb9868728f8ea7d96703&amp;source=constructor"
+                                   data-type="iframe" class="video-play-icon read-more lightbox btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">Показать на карте</a>
                             </div>
                         </div>
                     </div>
@@ -64,8 +64,8 @@
                         <div class="content mt-6">
                             <h5 class="text-lg font-medium">Контактные телефоны</h5>
                             <ul class="list-none mt-3">
-                                <li class="flex justify-between">
-                                    <p class="text-slate-400">МТС</p>
+                                <li class="flex justify-start">
+                                    <p class="text-slate-400 mr-6">МТС</p>
                                     <p class="text-indigo-600">+375 33 696 29 09</p>
                                 </li>
                             </ul>
@@ -82,8 +82,8 @@
                         <div class="content mt-6">
                             <h5 class="text-lg font-medium">Время работы</h5>
                             <ul class="list-none mt-3">
-                                <li class="flex justify-between">
-                                    <p class="text-slate-400">Ежедневно</p>
+                                <li class="flex justify-start">
+                                    <p class="text-slate-400 mr-6">Ежедневно</p>
                                     <p class="text-indigo-600">8.00 - 20.00</p>
                                 </li>
                             </ul>
@@ -177,11 +177,12 @@
             <?php $__currentLoopData = $doctors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doctor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="lg:col-span-3 md:col-span-6">
                     <div class="p-6 rounded-md border border-gray-100 group bg-white">
-                        <img src="<?php echo e(asset('storage/'.$doctor->img)); ?>" class="h-32 w-32 m-auto rounded-full shadow-md"
+                        <img src="<?php echo e(asset('storage/'.$doctor->img)); ?>" class="h-28 m-auto rounded-full shadow-md"
                              alt="">
 
                         <div class="content mt-4 text-center">
-                            <a href="" class="text-lg font-medium hover:text-indigo-600 block"><?php echo e($doctor->full_name); ?></a>
+
+                            <h1 class="mb-4 leading-normal font-semibold"><?php echo e($doctor->full_name); ?></h1>
                             <span class="text-slate-400 block"><?php echo e($doctor->specialization); ?></span>
 
                             <p class="text-slate-400 mt-4">Категория: <?php echo e($doctor->category); ?></p>
