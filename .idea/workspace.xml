@@ -5,41 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9323fb09-5484-451c-91f8-958d3f9bbfe1" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/public/image/bg/auth_hospital.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/bg/bg_doctors.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/bg/bg_profile.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/bg/contacts.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/icon/logo-icon-64.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/icon/user.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Account/sign_in.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Account/sign_up.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Account/user_profile.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Account/user_profile_change.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Home/contacts.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/auth.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Actions/SubscribeActiveListAction.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Actions/SubscribeDateAction.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Actions/SubscribeDoctorListAction.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Actions/SubscribeOldListAction.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Actions/SubscribeTimeAction.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/SubscribeManageRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/SubscribeRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Schedule_date.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Schedule_template.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2023_04_26_204404_create_schedule_templates_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/bg/bg_manage_register.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/bg/bg_schedules.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Account/Manage/manage_register_user.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Account/Manage/schedules_doctors.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Account/doctor_profile_get_subscribe.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Account/partial/partial_subscribe_date.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Account/partial/partial_subscribe_doctors.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Account/partial/partial_subscribe_services.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Account/partial/partial_subscribe_time.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Account/partial/user_find.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Account/subscribe.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Account/user_profile_get_subscribe.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/blade.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blade.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/049dc979-2a5a-4e05-9c1c-7a0be23b7c5b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/049dc979-2a5a-4e05-9c1c-7a0be23b7c5b.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/AuthPostRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/AuthPostRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/RegisterPostRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/RegisterPostRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Schedule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Subscribe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Subscribe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2023_01_09_134541_create_schedules_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2023_04_26_204630_create_schedules_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2023_01_09_134844_create_subscribes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2023_01_09_134844_create_subscribes_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/line.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/line.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/tailwind.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/plugins.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/plugins.init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/storage/uploads/image/doctors/ignateva.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/storage/uploads/image/doctors/ignateva.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/storage/uploads/image/users/BAX3f7jYhZq5MVPc2tevVc03ynfigwnBzhAKbwqF.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/icon/logo-icon-64.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/image/icon/logo-icon-64.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Account/sign_in.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Account/sign_in.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Account/sign_up.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Account/sign_up.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Account/user_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Account/user_profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Account/user_profile_change.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Account/user_profile_change.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Home/doctors.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Home/doctors.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Home/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Home/service.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/uploads/image/doctors/ignateva.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/storage/app/public/uploads/image/doctors/ignateva.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/uploads/image/users/BAX3f7jYhZq5MVPc2tevVc03ynfigwnBzhAKbwqF.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/9LyGcSGYP5tB246DmmO47F76EHc1wW4TfhLbnvqb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/cache/data/85/5f/855f92484c8c414d36c1b25cb24876e30229cbbf" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/cache/data/85/5f/855f92484c8c414d36c1b25cb24876e30229cbbf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/BHypLeSaRHel8Kj7RWOf6HR4N8o8BlyMML6D1Njw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/bmHjXdWWhdpdzi6Tn78YVMAzBuDRfkjpMZgjA1Un" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/views/05ac953af47d9d43254390750064be07.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/05ac953af47d9d43254390750064be07.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/views/3a21bd14d1fd2a4214977a320a07f5c0.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/3a21bd14d1fd2a4214977a320a07f5c0.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/3d31447b4446295f4e25fcb40840dc8d.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/3d31447b4446295f4e25fcb40840dc8d.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/89258fade919ff2e60505dec16c489ef.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/89258fade919ff2e60505dec16c489ef.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/8e5d7114fc2dcbbd7e7938bc59ebfdf9.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/8e5d7114fc2dcbbd7e7938bc59ebfdf9.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/views/a334aa540fb5e09965684bc142f58a15.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/a334aa540fb5e09965684bc142f58a15.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/a3910fa672a0853133447a01650440bc.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/a3910fa672a0853133447a01650440bc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/ac81840d310447cd2bec43d34dbad23e.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/ac81840d310447cd2bec43d34dbad23e.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -200,13 +224,15 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/PHP/OSPanel/domains/Health-Test/public/image/bg&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php.zend.framework.tool&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -239,14 +265,36 @@
       <command value="s make:Controller MainController" />
       <command value="s route:clear" />
       <command value="s cache:clear" />
+      <command value="s make:migration shedule_template -m" />
+      <command value="s make:Model shedule_template -m" />
+      <command value="s make:Model Shedule_template -m" />
+      <command value="s make:Model Schedule_template -m" />
+      <command value="s make:Model Schedule_date -m" />
+      <command value="s make:Model Schedule -m" />
+      <command value="s make:request SubscribeRequest" />
       <command value="s migrate:fresh --seed" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.phpunit.xml">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -274,7 +322,24 @@
       <workItem from="1681751276819" duration="11468000" />
       <workItem from="1681841505234" duration="7220000" />
       <workItem from="1681923455598" duration="12871000" />
-      <workItem from="1682339319106" duration="28523000" />
+      <workItem from="1682339319106" duration="29323000" />
+      <workItem from="1682442702138" duration="49000" />
+      <workItem from="1682442792431" duration="796000" />
+      <workItem from="1682530131771" duration="13568000" />
+      <workItem from="1682752035445" duration="9059000" />
+      <workItem from="1682841626638" duration="59000" />
+      <workItem from="1683134065509" duration="13756000" />
+      <workItem from="1683223426208" duration="7971000" />
+      <workItem from="1683367200728" duration="6700000" />
+      <workItem from="1683481332400" duration="5259000" />
+      <workItem from="1683487189058" duration="4976000" />
+      <workItem from="1683535066965" duration="202000" />
+      <workItem from="1683535443778" duration="9786000" />
+      <workItem from="1683645505719" duration="15874000" />
+      <workItem from="1683872429261" duration="19669000" />
+      <workItem from="1683914548788" duration="8426000" />
+      <workItem from="1683961714136" duration="20148000" />
+      <workItem from="1684063438484" duration="1625000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1679256737972</created>
@@ -304,7 +369,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681330677936</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update">
+      <created>1682441772689</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682441772690</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

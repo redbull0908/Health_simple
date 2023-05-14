@@ -1,7 +1,7 @@
 @extends('layouts.auth' ,['title'=>'Войти'])
 @section('content')
 <section class="md:h-screen py-36 flex items-center bg-[url('../../assets/images/cta.jpg')] bg-no-repeat bg-center">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+    <div class="absolute"></div>
     <div class="container">
         <div class="flex justify-center">
             <div class="max-w-[400px] w-full m-auto p-6 bg-white rounded-md">

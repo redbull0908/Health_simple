@@ -15,12 +15,15 @@ return new class extends Migration
     {
         Schema::create('subscribes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('doctor_name');
-            $table->string('service_name');
+            $table->bigInteger('id_doctor')->unsigned();
+            $table->bigInteger('id_service_category')->unsigned();
+            $table->bigInteger('id_service')->unsigned();
             $table->string('time');
-            $table->dateTime('date');
+            $table->date('date');
             $table->string('user_login');
-            $table->string('user_full_name');
+            $table->foreign('id_service_category')->references('id')->on('service_categories');
+            $table->foreign('id_service')->references('id')->on('services');
+            $table->foreign('id_doctor')->references('id')->on('doctors');
         });
     }
 

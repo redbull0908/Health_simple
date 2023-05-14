@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->string('login',20)->unique()->nullable(false);
             $table->string('full_name',40)->nullable();
-            $table->string('tel_number',15)->unique()->nullable(false)->default('');
+            $table->string('tel_number',15)->unique()->nullable()->default(null);
             $table->string('password',255)->nullable(false);
             $table->date('birthday')->nullable();
             $table->string('sex',7)->nullable();

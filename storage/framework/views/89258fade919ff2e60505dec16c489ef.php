@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
 
-<section class="md:h-screen py-36 flex items-center bg-[url('../../assets/images/cta.jpg')] bg-no-repeat bg-center">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+<section class="md:h-screen py-28 my-auto flex items-center bg-[url('../../assets/images/cta.jpg')] bg-no-repeat bg-center">
+    <div class="absolute"></div>
     <div class="container">
         <div class="flex justify-center">
             <div class="max-w-[400px] h-fit h-auto m-auto p-6 bg-white shadow-md  rounded-md">
@@ -47,9 +47,11 @@
                             <input type="submit" class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md w-full" value="Зарегистрироваться">
                         </div>
 
-                        <div class="text-center">
-                            <span class="text-slate-400 me-2">Есть аккаунт ? </span> <a href="<?php echo e(route('login')); ?>" class="text-black dark:text-white font-bold">Войти</a>
-                        </div>
+                        <?php if(auth()->guard()->guest()): ?>
+                            <div class="text-center">
+                                <span class="text-slate-400 me-2">Есть аккаунт ? </span> <a href="<?php echo e(route('login')); ?>" class="text-black dark:text-white font-bold">Войти</a>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </form>
             </div>

@@ -29,10 +29,10 @@
 <section class="relative md:py-24 py-16">
 
     <div class="container md:mt-8 mt-6">
-        <div class="flex justify-center flex-wrap">
-            <a href="" class="active-btn w-auto text-[12px] btn bg-emerald-600 hover:bg-indigo-600 border-0 text-white">Все</a>
+        <div class="flex flex-wrap">
+            <a href="" class="m-auto mt-2 w-[320px] active-btn text-[12px] btn bg-emerald-600 hover:bg-indigo-600 border-0 text-white">Все</a>
             @foreach($category as $item)
-            <a href="" class="w-auto text-[12px] btn bg-emerald-600 hover:bg-indigo-600 border-0 text-white">{{$item->name}}</a>
+            <a href="" class="m-auto mt-2 w-[320px] text-[12px] btn bg-emerald-600 hover:bg-indigo-600 border-0 text-white">{{$item->name}}</a>
             @endforeach
         </div><!--end grid-->
 
@@ -48,7 +48,17 @@
                         <span class="text-slate-400 block">{{$doctor->specialization}}</span>
                         <p class="text-slate-400">Категория: {{$doctor->category}}</p>
                         <p class="text-slate-400 mb-4">Опыт работы: {{$doctor->experience}}</p>
-                        <a href="" class="w-full text-[12px] btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">Записаться на прием</a>
+                        @hasrole('user')
+                        @if(!Auth::check())
+                            <a href="{{route('register')}}" class="w-full text-[12px] btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">Записаться на прием</a>
+                        @else
+                            <form method="post" action="{{ route('subscribe_doc') }}">
+                                @csrf
+                                <input name="id" class="hidden" type="text" value="{{$doctor->id}}">
+                                <input type="submit" class="w-full text-[12px] btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md" value="Записаться на прием">
+                            </form>
+                        @endif
+                        @endhasrole
                     </div>
                 </div>
             </div>

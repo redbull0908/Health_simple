@@ -28,10 +28,10 @@
 <section class="relative md:py-24 py-16">
 
     <div class="container md:mt-8 mt-6">
-        <div class="flex justify-center flex-wrap">
-            <a href="" class="active-btn w-auto text-[12px] btn bg-emerald-600 hover:bg-indigo-600 border-0 text-white">Все</a>
+        <div class="flex flex-wrap">
+            <a href="" class="m-auto mt-2 w-[320px] active-btn text-[12px] btn bg-emerald-600 hover:bg-indigo-600 border-0 text-white">Все</a>
             <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <a href="" class="w-auto text-[12px] btn bg-emerald-600 hover:bg-indigo-600 border-0 text-white"><?php echo e($item->name); ?></a>
+            <a href="" class="m-auto mt-2 w-[320px] text-[12px] btn bg-emerald-600 hover:bg-indigo-600 border-0 text-white"><?php echo e($item->name); ?></a>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div><!--end grid-->
 
@@ -47,7 +47,17 @@
                         <span class="text-slate-400 block"><?php echo e($doctor->specialization); ?></span>
                         <p class="text-slate-400">Категория: <?php echo e($doctor->category); ?></p>
                         <p class="text-slate-400 mb-4">Опыт работы: <?php echo e($doctor->experience); ?></p>
-                        <a href="" class="w-full text-[12px] btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">Записаться на прием</a>
+                        <?php if(\Spatie\Permission\PermissionServiceProvider::bladeMethodWrapper('hasRole', 'user')): ?>
+                        <?php if(!Auth::check()): ?>
+                            <a href="<?php echo e(route('register')); ?>" class="w-full text-[12px] btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">Записаться на прием</a>
+                        <?php else: ?>
+                            <form method="post" action="<?php echo e(route('subscribe_doc')); ?>">
+                                <?php echo csrf_field(); ?>
+                                <input name="id" class="hidden" type="text" value="<?php echo e($doctor->id); ?>">
+                                <input type="submit" class="w-full text-[12px] btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md" value="Записаться на прием">
+                            </form>
+                        <?php endif; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

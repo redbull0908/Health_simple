@@ -22,22 +22,24 @@
                                 <input id="pro-img" name="profile-image" type="file" class="hidden" onchange="loadFile(event)"/>
                             </form>
                             <div>
-                                <div class="relative h-28 w-28 mx-auto">
+                                <div class="relative mx-auto">
                                     @if(Auth::user()->img)
-                                        <img src="{{asset('storage/'.Auth::user()->img)}}" class="rounded-full shadow dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800" id="profile-image" alt="">
+                                        <img src="{{Storage::url(Auth::user()->img)}}" class="mx-auto rounded-full shadow dark:shadow-gray-800 h-32 w-32" id="profile-image" alt="">
                                     @else
-                                        <img src="{{asset('image/icon/user.png')}}" class="rounded-full shadow dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800" id="profile-image" alt="">
+                                        <img src="{{asset('image/icon/user.png')}}" class="rounded-full shadow dark:shadow-gray-800 h-24 mx-auto" id="profile-image" alt="">
                                     @endif
-                                    <label class="absolute inset-0 cursor-pointer" for="pro-img"></label>
-                                </div>
-                                <div class="mt-10">
-                                    <h5 class="text-lg font-semibold">{{Auth::user()->full_name}}</h5>
-                                    <p class="text-slate-400">+375{{Auth::user()->tel_number}}</p>
+                                    <label class="absolute inset-0 cursor-pointer" for="pro-img" title="Загрузить фото"></label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="border-t border-gray-100 dark:border-gray-700">
+                        <div class="border-t border-gray-100 dark:border-gray-700 mt-5 text-center">
+                            <div class="">
+                                <h5 class="text-lg font-semibold">{{Auth::user()->full_name}}</h5>
+                                @hasrole('user')
+                                <p class="text-slate-400">+375{{Auth::user()->tel_number}}</p>
+                                @endhasrole
+                            </div>
                             <ul class="list-none sidebar-nav mb-0 mt-3" id="navmenu-nav">
                                 <li class="navbar-item account-menu">
                                     <a href="{{route('profile')}}" class="navbar-link text-slate-400 flex items-center py-2 rounded">
@@ -47,12 +49,29 @@
                                 </li>
 
 
-                                <li class="navbar-item account-menu">
-                                    <a href="" class="navbar-link text-slate-400 flex items-center py-2 rounded">
-                                        <span class="mr-2 text-[18px] mb-0"><i class="uil uil-bell"></i></span>
-                                        <h6 class="mb-0 font-semibold">Записи на прием</h6>
-                                    </a>
-                                </li>
+                                @can('subscribe')
+                                    <li class="navbar-item account-menu">
+                                        <a href="{{route('subscribe')}}" class="navbar-link text-slate-400 flex items-center py-2 rounded">
+                                            <span class="mr-2 text-[18px] mb-0"><i class="uil uil-ambulance"></i></span>
+                                            <h6 class="mb-0 font-semibold">Записаться на прием</h6>
+                                        </a>
+                                    </li>
+
+                                    <li class="navbar-item account-menu">
+                                        <a id="get_sub_link" href="{{route('get_user_subscribe')}}" class="navbar-link text-slate-400 flex items-center py-2 rounded">
+                                            <span class="mr-2 text-[18px] mb-0"><i class="uil uil-bell"></i></span>
+                                            <h6 class="mb-0 font-semibold">Записи на прием</h6>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('doctor_subscribe')
+                                    <li class="navbar-item account-menu">
+                                        <a id="get_sub_link" href="{{route('get_doctor_subscribe')}}" class="navbar-link text-slate-400 flex items-center py-2 rounded">
+                                            <span class="mr-2 text-[18px] mb-0"><i class="uil uil-bell"></i></span>
+                                            <h6 class="mb-0 font-semibold">Записи на прием</h6>
+                                        </a>
+                                    </li>
+                                @endcan
 
                                 <li class="navbar-item account-menu">
                                     <a href="{{route('change')}}" class="navbar-link text-slate-400 flex items-center py-2 rounded">
@@ -79,6 +98,7 @@
                     <div>
                         <h5 class="text-xl font-semibold">Информация :</h5>
                         <div class="mt-6">
+                            @hasrole('user')
                             <div class="flex items-center">
                                 <i data-feather="mail" class="fea icon-ex-md text-slate-400 mr-3"></i>
                                 <div class="flex-1">
@@ -86,6 +106,7 @@
                                     <p class="text-slate-400">{{'+375'.Auth::user()->tel_number}}</p>
                                 </div>
                             </div>
+                            @endhasrole
                             @if(Auth::user()->full_name)
                             <div class="flex items-center mt-3">
                                 <i data-feather="info" class="fea icon-ex-md text-slate-400 mr-3"></i>

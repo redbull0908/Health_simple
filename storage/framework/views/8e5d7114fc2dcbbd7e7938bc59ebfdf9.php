@@ -21,22 +21,24 @@
                                 <input id="pro-img" name="profile-image" type="file" class="hidden" onchange="loadFile(event)"/>
                             </form>
                             <div>
-                                <div class="relative h-28 w-28 mx-auto">
+                                <div class="relative mx-auto">
                                     <?php if(Auth::user()->img): ?>
-                                        <img src="<?php echo e(asset('storage/'.Auth::user()->img)); ?>" class="rounded-full shadow dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800" id="profile-image" alt="">
+                                        <img src="<?php echo e(Storage::url(Auth::user()->img)); ?>" class="mx-auto rounded-full shadow dark:shadow-gray-800 h-32 w-32" id="profile-image" alt="">
                                     <?php else: ?>
-                                        <img src="<?php echo e(asset('image/icon/user.png')); ?>" class="rounded-full shadow dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800" id="profile-image" alt="">
+                                        <img src="<?php echo e(asset('image/icon/user.png')); ?>" class="rounded-full shadow dark:shadow-gray-800 h-24 mx-auto" id="profile-image" alt="">
                                     <?php endif; ?>
-                                    <label class="absolute inset-0 cursor-pointer" for="pro-img"></label>
-                                </div>
-                                <div class="mt-10">
-                                    <h5 class="text-lg font-semibold"><?php echo e(Auth::user()->full_name); ?></h5>
-                                    <p class="text-slate-400">+375<?php echo e(Auth::user()->tel_number); ?></p>
+                                    <label class="absolute inset-0 cursor-pointer" for="pro-img" title="Загрузить фото"></label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="border-t border-gray-100 dark:border-gray-700">
+                        <div class="border-t border-gray-100 dark:border-gray-700 mt-5 text-center">
+                            <div class="">
+                                <h5 class="text-lg font-semibold"><?php echo e(Auth::user()->full_name); ?></h5>
+                                <?php if(\Spatie\Permission\PermissionServiceProvider::bladeMethodWrapper('hasRole', 'user')): ?>
+                                <p class="text-slate-400">+375<?php echo e(Auth::user()->tel_number); ?></p>
+                                <?php endif; ?>
+                            </div>
                             <ul class="list-none sidebar-nav mb-0 mt-3" id="navmenu-nav">
                                 <li class="navbar-item account-menu">
                                     <a href="<?php echo e(route('profile')); ?>" class="navbar-link text-slate-400 flex items-center py-2 rounded">
@@ -46,12 +48,29 @@
                                 </li>
 
 
-                                <li class="navbar-item account-menu">
-                                    <a href="" class="navbar-link text-slate-400 flex items-center py-2 rounded">
-                                        <span class="mr-2 text-[18px] mb-0"><i class="uil uil-bell"></i></span>
-                                        <h6 class="mb-0 font-semibold">Записи на прием</h6>
-                                    </a>
-                                </li>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('subscribe')): ?>
+                                    <li class="navbar-item account-menu">
+                                        <a href="<?php echo e(route('subscribe')); ?>" class="navbar-link text-slate-400 flex items-center py-2 rounded">
+                                            <span class="mr-2 text-[18px] mb-0"><i class="uil uil-ambulance"></i></span>
+                                            <h6 class="mb-0 font-semibold">Записаться на прием</h6>
+                                        </a>
+                                    </li>
+
+                                    <li class="navbar-item account-menu">
+                                        <a id="get_sub_link" href="<?php echo e(route('get_user_subscribe')); ?>" class="navbar-link text-slate-400 flex items-center py-2 rounded">
+                                            <span class="mr-2 text-[18px] mb-0"><i class="uil uil-bell"></i></span>
+                                            <h6 class="mb-0 font-semibold">Записи на прием</h6>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('doctor_subscribe')): ?>
+                                    <li class="navbar-item account-menu">
+                                        <a id="get_sub_link" href="<?php echo e(route('get_doctor_subscribe')); ?>" class="navbar-link text-slate-400 flex items-center py-2 rounded">
+                                            <span class="mr-2 text-[18px] mb-0"><i class="uil uil-bell"></i></span>
+                                            <h6 class="mb-0 font-semibold">Записи на прием</h6>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
 
                                 <li class="navbar-item account-menu">
                                     <a href="<?php echo e(route('change')); ?>" class="navbar-link text-slate-400 flex items-center py-2 rounded">
@@ -78,6 +97,7 @@
                     <div>
                         <h5 class="text-xl font-semibold">Информация :</h5>
                         <div class="mt-6">
+                            <?php if(\Spatie\Permission\PermissionServiceProvider::bladeMethodWrapper('hasRole', 'user')): ?>
                             <div class="flex items-center">
                                 <i data-feather="mail" class="fea icon-ex-md text-slate-400 mr-3"></i>
                                 <div class="flex-1">
@@ -85,6 +105,7 @@
                                     <p class="text-slate-400"><?php echo e('+375'.Auth::user()->tel_number); ?></p>
                                 </div>
                             </div>
+                            <?php endif; ?>
                             <?php if(Auth::user()->full_name): ?>
                             <div class="flex items-center mt-3">
                                 <i data-feather="info" class="fea icon-ex-md text-slate-400 mr-3"></i>

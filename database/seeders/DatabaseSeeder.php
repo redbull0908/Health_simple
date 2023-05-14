@@ -365,6 +365,177 @@ class DatabaseSeeder extends Seeder
             'img'=>'uploads/image/doctors/somova_ekaterina.jpg'
         ]);
 
+        //Schedule_template
+        \DB::table('schedule_templates')->insert([
+           'name'=>'full',
+           'time_from'=>'8:00',
+           'time_to'=>'20:00',
+           'interval'=>15
+        ]);
+        \DB::table('schedule_templates')->insert([
+            'name'=>'first_half',
+            'time_from'=>'8:00',
+            'time_to'=>'14:00',
+            'interval'=>15
+        ]);
+        \DB::table('schedule_templates')->insert([
+            'name'=>'last_half',
+            'time_from'=>'14:00',
+            'time_to'=>'20:00',
+            'interval'=>15
+        ]);
+
+        //Shedule
+        for ($i = 0 ; $i<30 ; $i++){
+            if($i>20 or $i < 10){
+                //urologia
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>1,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>3
+                ]);
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>4,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>2
+                ]);
+                //oftalmologia
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>10,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>3
+                ]);
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>11,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>2
+                ]);
+                //laborat_diagn
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>3,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>3
+                ]);
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>6,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>2
+                ]);
+                //uzi
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>12,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>3
+                ]);
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>13,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>2
+                ]);
+                //ginekologia
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>2,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>3
+                ]);
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>5,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>2
+                ]);
+                //onkologia
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>8,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>3
+                ]);
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>9,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>2
+                ]);
+            }
+            else{
+                //urologia
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>4,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>3
+                ]);
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>1,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>2
+                ]);
+                //oftalmologia
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>11,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>3
+                ]);
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>10,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>2
+                ]);
+                //laborat_diagn
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>6,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>3
+                ]);
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>3,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>2
+                ]);
+                //uzi
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>13,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>3
+                ]);
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>12,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>2
+                ]);
+                //ginekologia
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>5,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>3
+                ]);
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>2,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>2
+                ]);
+                //onkologia
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>9,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>3
+                ]);
+                \DB::table('schedules')->insert([
+                    'doctor_id'=>8,
+                    'date'=>Carbon::now()->addDays($i)->toDateString(),
+                    'schedule_template_id'=>2
+                ]);
+            }
+        }
+
+        for ($i = 0 ; $i<30 ; $i++){
+            if($i % 4 == 0){
+                $i+=2;
+            }
+            \DB::table('schedules')->insert([
+                'doctor_id'=>7,
+                'date'=>Carbon::now()->addDays($i)->toDateString(),
+                'schedule_template_id'=>1
+            ]);
+        }
+
         //Roles
 
         Role::create([
@@ -397,23 +568,142 @@ class DatabaseSeeder extends Seeder
             'name'=>'view_profile',
         ]);
 
+        $subscribe = Permission::create(['name'=>'subscribe']);
+        $change_profile = Permission::create(['name'=>'change_profile']);
+        $doctor_subscribe = Permission::create(['name'=>'doctor_subscribe']);
+        $register_manage = Permission::create(['name'=>'manage']);
+        $search_info = Permission::create(['name'=>'search_info']);
+
         //Users
 
         User::create([
             'login' => 'user123',
             'full_name' => 'Иваньков Алексей Федорович',
             'sex' => 'Мужской',
-            'password' => \Hash::make('&Aa1234'),
+            'password' => \Hash::make('!Aa1234'),
             'birthday' => \Date::make('17-02-2010'),
             'tel_number' => '446752384',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
-        ])->assignRole('user')->givePermissionTo($view_profile);
+        ])->assignRole('user')->givePermissionTo([$view_profile,$subscribe,$change_profile,$search_info]);
 
+        //admin
         User::create([
             'login' => 'super_user',
             'full_name' => 'admin',
-            'password' => \Hash::make('&Aa1234'),
+            'password' => \Hash::make('!Aa1234'),
         ]);
+
+        //doctors
+        User::create([
+            'login'=>'doc1',
+            'full_name' => 'Иванов Иван',
+            'tel_number'=> 1,
+            'img'=>'uploads/image/doctors/ivanov.jpg',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('doctor')->givePermissionTo([$view_profile,$change_profile,$doctor_subscribe]);
+
+        User::create([
+            'login'=>'doc2',
+            'full_name' => 'Игнатьева Тамара',
+            'tel_number'=> 2,
+            'img'=>'uploads/image/doctors/ignateva.jpg',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('doctor')->givePermissionTo([$view_profile,$change_profile,$doctor_subscribe]);
+
+        User::create([
+            'login'=>'doc3',
+            'full_name' => 'Волковская Тамара',
+            'tel_number'=> 3,
+            'img'=>'uploads/image/doctors/volkovskaa_tamara.jpg',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('doctor')->givePermissionTo([$view_profile,$change_profile,$doctor_subscribe]);
+
+        User::create([
+            'login'=>'doc4',
+            'full_name' => 'Александров Алексей',
+            'tel_number'=> 4,
+            'img'=>'uploads/image/doctors/alexandrov.jpg',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('doctor')->givePermissionTo([$view_profile,$change_profile,$doctor_subscribe]);
+
+        User::create([
+            'login'=>'doc5',
+            'full_name' => 'Кубарева Анна',
+            'tel_number'=> 5,
+            'img'=>'uploads/image/doctors/kubareva.jpg',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('doctor')->givePermissionTo([$view_profile,$change_profile,$doctor_subscribe]);
+
+        User::create([
+            'login'=>'doc6',
+            'full_name' => 'Кравец Ольга',
+            'tel_number'=> 6,
+            'img'=>'uploads/image/doctors/kravec_olga.jpg',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('doctor')->givePermissionTo([$view_profile,$change_profile,$doctor_subscribe]);
+
+        User::create([
+            'login'=>'doc7',
+            'full_name' => 'Долматова Анна',
+            'tel_number'=> 7,
+            'img'=>'uploads/image/doctors/dolmatova_anna.jpg',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('doctor')->givePermissionTo([$view_profile,$change_profile,$doctor_subscribe]);
+
+        User::create([
+            'login'=>'doc8',
+            'full_name' => 'Дегтярев Андрей',
+            'tel_number'=> 8,
+            'img'=>'uploads/image/doctors/degterev_andrey.jpg',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('doctor')->givePermissionTo([$view_profile,$change_profile,$doctor_subscribe]);
+
+        User::create([
+            'login'=>'doc9',
+            'full_name' => 'Протасев Вячеслав',
+            'tel_number'=> 9,
+            'img'=>'uploads/image/doctors/protasev_slava.jpg',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('doctor')->givePermissionTo([$view_profile,$change_profile,$doctor_subscribe]);
+
+        User::create([
+            'login'=>'doc10',
+            'full_name' => 'Федорова Юлия',
+            'tel_number'=> 10,
+            'img'=>'uploads/image/doctors/fedorova_yulia.jpg',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('doctor')->givePermissionTo([$view_profile,$change_profile,$doctor_subscribe]);
+
+        User::create([
+            'login'=>'doc11',
+            'full_name' => 'Дроздова Екатерина',
+            'tel_number'=> 11,
+            'img'=>'uploads/image/doctors/drozdova_ekaterina.jpg',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('doctor')->givePermissionTo([$view_profile,$change_profile,$doctor_subscribe]);
+
+        User::create([
+            'login'=>'doc12',
+            'full_name' => 'Личева Анастасия',
+            'tel_number'=> 12,
+            'img'=>'uploads/image/doctors/licheva_nasta.jpg',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('doctor')->givePermissionTo([$view_profile,$change_profile,$doctor_subscribe]);
+
+        User::create([
+            'login'=>'doc13',
+            'full_name' => 'Сомова Екатерина',
+            'tel_number'=> 13,
+            'img'=>'uploads/image/doctors/somova_ekaterina.jpg',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('doctor')->givePermissionTo([$view_profile,$change_profile,$doctor_subscribe]);
+
+        //manage
+        User::create([
+            'login'=>'manage_HS',
+            'full_name' => 'Регистратура',
+            'password'=>\Hash::make('!Aa1234')
+        ])->assignRole('manage')->givePermissionTo([$register_manage,$search_info]);
     }
 }

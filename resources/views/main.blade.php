@@ -14,10 +14,19 @@
             <h1 class="font-bold text-white lg:leading-normal leading-normal text-4xl lg:text-5xl mb-6 mt-3">Медицинский центр</h1>
             <p class="text-white/60 text-lg max-w-xl">Диагностика и лечение осуществляются высококвалифицированными специалистами с использованием современного оборудования.</p>
 
-            <div class="mt-8">
-                <a href=""
-                   class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">Записаться на прием</a>
-            </div>
+
+            @hasrole('user')
+                <div class="mt-8">
+                    <a href="{{Auth::check() ? route('subscribe') : route('register')}}"
+                       class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">Записаться на прием</a>
+                </div>
+            @endhasrole
+            @guest()
+                <div class="mt-8">
+                    <a href="{{Auth::check() ? route('subscribe') : route('register')}}"
+                       class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">Записаться на прием</a>
+                </div>
+            @endguest
         </div><!--end grid-->
     </div><!--end container-->
 </section><!--end section-->
@@ -67,7 +76,7 @@
                             <ul class="list-none mt-3">
                                 <li class="flex justify-start">
                                     <p class="text-slate-400 mr-6">МТС</p>
-                                    <p class="text-indigo-600">+375 33 696 29 09</p>
+                                    <a href="tel:+375336962909" class="btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">+375 33 696 29 09</a>
                                 </li>
                             </ul>
                         </div>

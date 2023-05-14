@@ -2,9 +2,9 @@
 <html lang="en" class="light scroll-smooth" dir="ltr">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <!-- favicon -->
     <link rel="shortcut icon" href="<?php echo e(asset('image/icon/favicon.png')); ?>" type="image/png">
@@ -71,16 +71,36 @@
 
                 <li><a href="<?php echo e(route('contacts')); ?>" class="sub-menu-item">Контакты</a></li>
                 <?php if(auth()->guard()->guest()): ?>
-                <li><a href="<?php echo e(route('login')); ?>" class="sub-menu-item">Войти | Регистрация</a></li>
+                    <li><a href="<?php echo e(route('login')); ?>" class="sub-menu-item">Войти | Регистрация</a></li>
                 <?php endif; ?>
-                <?php if(\Spatie\Permission\PermissionServiceProvider::bladeMethodWrapper('hasRole', 'user')): ?>
-                <li class="has-submenu parent-parent-menu-item">
-                    <a href="javascript:void(0)"><?php echo e(Auth::user()->login); ?></a><span class="menu-arrow"></span>
-                    <ul class="submenu">
-                        <li><a href="<?php echo e(route('profile')); ?>" class="sub-menu-item">Профиль</a></li>
-                        <li><a href="#" class="sub-menu-item">Записаться на прием</a></li>
-                        <li><a href="<?php echo e(route('logout')); ?>" class="sub-menu-item">Выйти</a></li>
-                    </ul>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view_profile')): ?>
+                    <li class="has-submenu parent-parent-menu-item">
+                        <a href="javascript:void(0)"><?php echo e(Auth::user()->login); ?></a><span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li><a href="<?php echo e(route('profile')); ?>" class="sub-menu-item">Профиль</a></li>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('subscribe')): ?>
+                                <li><a href="<?php echo e(route('subscribe')); ?>" class="sub-menu-item">Записаться на прием</a></li>
+                                <li><a href="<?php echo e(route('get_user_subscribe')); ?>" class="sub-menu-item">Просмотреть
+                                        записи</a></li>
+                            <?php endif; ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('doctor_subscribe')): ?>
+                                <li><a href="<?php echo e(route('get_doctor_subscribe')); ?>" class="sub-menu-item">Просмотреть
+                                        записи</a></li>
+                            <?php endif; ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('change_profile')): ?>
+                                <li><a href="<?php echo e(route('change')); ?>" class="sub-menu-item">Изменить профиль</a></li>
+                            <?php endif; ?>
+                            <li><a href="<?php echo e(route('logout')); ?>" class="sub-menu-item">Выйти</a></li>
+                        </ul>
+                <?php endif; ?>
+
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage')): ?>
+                    <li class="has-submenu parent-parent-menu-item">
+                        <a href="javascript:void(0)"><?php echo e(Auth::user()->full_name); ?></a><span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li><a href="<?php echo e(route('schedules_doctors')); ?>" class="sub-menu-item">Рассписание врачей</a></li>
+                            <li><a href="<?php echo e(route('manage_register')); ?>" class="sub-menu-item">Записать пациента на прием</a></li>
+                            <li><a href="<?php echo e(route('logout')); ?>" class="sub-menu-item">Выйти</a></li>
                 <?php endif; ?>
             </ul><!--end navigation menu-->
         </div><!--end navigation-->
@@ -105,13 +125,30 @@
                                 <img src="<?php echo e(asset('image/icon/logo-dark.png')); ?>" alt="">
                             </a>
                             <ul class="list-none mt-6">
-                                <li class="inline"><a href="tel:+375336962909" target="_blank" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-phone" title="Позвонить"></i></a></li>
-                                <li class="inline"><a href="mailto:kirillbugrimov1@gmail.com" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-envelope align-middle" title="Написать"></i></a></li>
-                                <li class="inline"><a href="https://github.com/redbull0908/Health_simple" target="_blank" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-github align-middle" title="Github"></i></a></li>
-                                <li class="inline"><a href="https://www.linkedin.com/in/kirill-bugrimov-879863224" target="_blank" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-linkedin" title="Linkedin"></i></a></li>
-                                <li class="inline"><a href="https://vk.com/kirill_bugrimov" target="_blank" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-vk align-middle" title="vkontakte"></i></a></li>
-                                <li class="inline"><a href="https://www.instagram.com/kirill.vse.skuril/" target="_blank" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-instagram align-middle" title="instagram"></i></a></li>
-                                <li class="inline"><a href="skype:live:.cid.8df272c51f9ae7b4?chat" target="_blank" class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i class="uil uil-skype align-middle" title="Skype"></i></a></li>
+                                <li class="inline"><a href="tel:+375336962909" target="_blank"
+                                                      class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                            class="uil uil-phone" title="Позвонить"></i></a></li>
+                                <li class="inline"><a href="mailto:kirillbugrimov1@gmail.com"
+                                                      class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                            class="uil uil-envelope align-middle" title="Написать"></i></a></li>
+                                <li class="inline"><a href="https://github.com/redbull0908/Health_simple"
+                                                      target="_blank"
+                                                      class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                            class="uil uil-github align-middle" title="Github"></i></a></li>
+                                <li class="inline"><a href="https://www.linkedin.com/in/kirill-bugrimov-879863224"
+                                                      target="_blank"
+                                                      class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                            class="uil uil-linkedin" title="Linkedin"></i></a></li>
+                                <li class="inline"><a href="https://vk.com/kirill_bugrimov" target="_blank"
+                                                      class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                            class="uil uil-vk align-middle" title="vkontakte"></i></a></li>
+                                <li class="inline"><a href="https://www.instagram.com/kirill.vse.skuril/"
+                                                      target="_blank"
+                                                      class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                            class="uil uil-instagram align-middle" title="instagram"></i></a></li>
+                                <li class="inline"><a href="skype:live:.cid.8df272c51f9ae7b4?chat" target="_blank"
+                                                      class="btn btn-icon btn-sm border border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                            class="uil uil-skype align-middle" title="Skype"></i></a></li>
                             </ul><!--end icon-->
                         </div><!--end col-->
                         <div class="lg:col-span-3 md:col-span-4">
@@ -126,9 +163,18 @@
                                 <li class="mt-[10px]"><a href="<?php echo e(route('doctors')); ?>"
                                                          class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                             class="uil uil-angle-right-b me-1"></i> Врачи</a></li>
-                                <li class="mt-[10px]"><a href="#"
-                                                         class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
+                                <?php if(\Spatie\Permission\PermissionServiceProvider::bladeMethodWrapper('hasRole', 'user')): ?>
+                                <li class="mt-[10px]"><a
+                                        href="<?php echo e(Auth::check() ? route('subscribe') : route('register')); ?>"
+                                        class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                             class="uil uil-angle-right-b me-1"></i> Запись на прием</a></li>
+                                <?php endif; ?>
+                                <?php if(auth()->guard()->guest()): ?>
+                                    <li class="mt-[10px]"><a
+                                            href="<?php echo e(Auth::check() ? route('subscribe') : route('register')); ?>"
+                                            class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
+                                                class="uil uil-angle-right-b me-1"></i> Запись на прием</a></li>
+                                <?php endif; ?>
                                 <?php if(auth()->guard()->guest()): ?>
                                     <li class="mt-[10px]"><a href="<?php echo e(route('login')); ?>"
                                                              class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
