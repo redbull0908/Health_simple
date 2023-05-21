@@ -1,7 +1,7 @@
 @extends('layouts.index' ,['title'=>$category->name])
 @section('content')
     <!-- Start Hero -->
-    <section class="relative table w-full py-36 lg:py-44 bg-no-repeat bg-center" style="background-image: url({{$category->img}})">
+    <section class="relative table w-full py-36 lg:py-44 bg-no-repeat bg-center" style="background-image: url({{asset('storage/'.$category->img)}})">
         <div class="absolute inset-0 bg-black opacity-75"></div>
         <div class="container">
             <div class="grid grid-cols-1 pb-8 text-center mt-10">

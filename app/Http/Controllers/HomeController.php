@@ -8,6 +8,7 @@ use DB;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class HomeController extends Controller
 {
@@ -25,10 +26,13 @@ class HomeController extends Controller
         return view('Home.doctors',compact('doctors','category'));
     }
 
-    function service ($name) : View|Factory|Application
+    function service ($name) : Application|Factory|View|\Illuminate\Foundation\Application | RedirectResponse
     {
         $category = ServiceCategory::where('url_name','like',$name)->first();
-        $services = Service::all()->where('id_service_category','=',$category->id);
-        return view('Home.service',compact('services','category'));
+        if($category){
+            $services = Service::all()->where('id_service_category','=',$category->id);
+            return view('Home.service',compact('services','category'));
+        }
+        return redirect()->back();
     }
 }

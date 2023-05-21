@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('full_name');
+            $table->string('full_name')->default(null)->nullable();
             $table->string('experience');
             $table->string('specialization');
-            $table->string('category');
+            $table->string('category')->default(null)->nullable();
             $table->string('img')->nullable();
-            $table->bigInteger('id_service_category')->unsigned();
-            $table->foreign('id_service_category')->references('id')->on('service_categories');
+            $table->bigInteger('id_service_category')->unsigned()->nullable()->default(null);
+            $table->foreign('id_service_category')->references('id')->on('service_categories')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

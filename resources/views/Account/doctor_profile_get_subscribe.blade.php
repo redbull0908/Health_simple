@@ -26,7 +26,7 @@
                                     <div class="relative mx-auto">
                                         @if(Auth::user()->img)
                                             <img src="{{Storage::url(Auth::user()->img)}}"
-                                                 class="mx-auto rounded-full shadow dark:shadow-gray-800 h-52"
+                                                 class="mx-auto rounded-full shadow dark:shadow-gray-800 h-32 w-32"
                                                  id="profile-image" alt="">
                                         @else
                                             <img src="{{asset('image/icon/user.png')}}"
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                 </div>
-                @hasrole('doctor')
+                @can('doctor_subscribe')
                 <div class="lg:w-3/4 md:w-2/3 md:px-3 mt-[30px] md:mt-0">
                     <div id="accordion-collapse" data-accordion="collapse">
 
@@ -136,7 +136,7 @@
                                                             <th class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{\Carbon\Carbon::make($sub->date)->format('d-m-Y')}}</th>
                                                             <td class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{$sub->time}}</td>
                                                             <td class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{$sub->sex}}</td>
-                                                            <td class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{\Carbon\Carbon::make($sub->birthday)->format('d-m-y')}}</td>
+                                                            <td class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{\Carbon\Carbon::make($sub->birthday)->format('d-m-Y')}}</td>
                                                             <td class="p-3 border border-gray-100 dark:border-gray-700">
                                                                 <div class="flex items-center mb-3">
                                                                     @if($sub->img)
@@ -221,7 +221,7 @@
                                                                     <th class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{\Carbon\Carbon::make($sub->date)->format('d-m-Y')}}</th>
                                                                     <td class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{$sub->time}}</td>
                                                                     <td class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{$sub->sex}}</td>
-                                                                    <td class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{\Carbon\Carbon::make($sub->birthday)->format('d-m-y')}}</td>
+                                                                    <td class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{\Carbon\Carbon::make($sub->birthday)->format('d-m-Y')}}</td>
                                                                     <td class="p-3 border border-gray-100 dark:border-gray-700">
                                                                         <div class="flex items-center mb-3">
                                                                             @if($sub->img)
@@ -311,7 +311,7 @@
                                                                             <th class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{\Carbon\Carbon::make($sub->date)->format('d-m-Y')}}</th>
                                                                             <td class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{$sub->time}}</td>
                                                                             <td class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{$sub->sex}}</td>
-                                                                            <td class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{\Carbon\Carbon::make($sub->birthday)->format('d-m-y')}}</td>
+                                                                            <td class="text-center text-indigo-600 border border-gray-100 dark:border-gray-700 py-5">{{\Carbon\Carbon::make($sub->birthday)->format('d-m-Y')}}</td>
                                                                             <td class="p-3 border border-gray-100 dark:border-gray-700">
                                                                                 <div class="flex items-center mb-3">
                                                                                     @if($sub->img)
@@ -352,7 +352,7 @@
 
                                 </div>
                         </div>
-                        @endhasrole
+                        @endcan
                     </div><!--end grid-->
                 </div><!--end container-->
             </div>

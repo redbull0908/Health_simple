@@ -10,7 +10,7 @@ class SubscribeDoctorListAction
     {
         $subs = \DB::table('subscribes')->join('doctors','subscribes.id_doctor','=','doctors.id')->
         join('users','users.login','=','subscribes.user_login')->
-        join('services','subscribes.id_service_category','=','services.id')->where('doctors.id','=',\Auth::user()->tel_number)->
+        join('services','subscribes.id_service_category','=','services.id')->where('doctors.id','=',\Auth::user()->doc_id)->
         select('users.full_name as name','users.birthday as birthday','users.sex as sex','services.name as service','subscribes.date as date','subscribes.time as time',
             'users.img as img')->get();
 
@@ -31,7 +31,7 @@ class SubscribeDoctorListAction
     {
         $subs = \DB::table('subscribes')->join('doctors','subscribes.id_doctor','=','doctors.id')->
         join('users','users.login','=','subscribes.user_login')->
-        join('services','subscribes.id_service_category','=','services.id')->where('doctors.id','=',\Auth::user()->tel_number)->
+        join('services','subscribes.id_service_category','=','services.id')->where('doctors.id','=',\Auth::user()->doc_id)->
         select('users.full_name as name','users.birthday as birthday','users.sex as sex','services.name as service','subscribes.date as date','subscribes.time as time',
             'users.img as img')->get();
 
@@ -53,7 +53,7 @@ class SubscribeDoctorListAction
     {
         $subs = \DB::table('subscribes')->join('doctors','subscribes.id_doctor','=','doctors.id')->
         join('users','users.login','=','subscribes.user_login')->
-        join('services','subscribes.id_service_category','=','services.id')->where('doctors.id','=',\Auth::user()->tel_number)->
+        join('services','subscribes.id_service_category','=','services.id')->where('doctors.id','=',\Auth::user()->doc_id)->
         select('users.full_name as name','users.birthday as birthday','users.sex as sex','services.name as service','subscribes.date as date','subscribes.time as time',
             'users.img as img')->get();
 

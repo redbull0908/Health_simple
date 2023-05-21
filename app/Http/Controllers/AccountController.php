@@ -6,9 +6,11 @@ use App\Actions\SubscribeActiveListAction;
 use App\Actions\SubscribeDoctorListAction;
 use App\Actions\SubscribeOldListAction;
 use App\Actions\SubscribeTimeAction;
+use App\Http\Requests\ManageNewUser;
 use App\Http\Requests\RegisterPostRequest;
 use App\Http\Requests\AuthPostRequest;
 use App\Http\Requests\SubscribeManageRequest;
+use App\Http\Requests\SubscribeRequest;
 use App\Http\Requests\UserInfoRequest;
 use App\Models\Doctor;
 use App\Models\Service;
@@ -22,7 +24,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Actions\SubscribeDateAction;
-use PhpParser\Comment\Doc;
 use Storage;
 use function view;
 
@@ -44,7 +45,7 @@ class AccountController extends Controller
         $user->password = password_hash($request->password, PASSWORD_DEFAULT);
         $user->created_at = Carbon::now();
         $user->updated_at = Carbon::now();
-        $user->assignRole('user')->givePermissionTo('view_profile');
+        $user->assignRole('user')->givePermissionTo(['view_profile','subscribe','change_profile','search_info']);
         if ($user->save()) {
             Auth::login($user);
             return redirect()->route('change');
@@ -113,11 +114,12 @@ class AccountController extends Controller
                 'surname' => 'required|alpha',
                 'name' => 'required|alpha',
                 'second_name' => 'required|alpha',
-                'date' => 'required|date',
-                'sex' => 'required'
+                'date' => ['required','date','after:1903-01-01','before:2013-01-01'],
+                'sex' => ['required',Rule::in('Мужской','Женский')]
             ],
             [
                 'required' => 'Поле не заполнено.',
+                'sex.in'=>'Поле заполенено не корректно',
                 'date' => 'Введите дату.',
                 'surname.alpha' => 'Фамилия может содержать только буквы.',
                 'name.alpha' => 'Имя может содержать только буквы.',
@@ -130,6 +132,7 @@ class AccountController extends Controller
         $user->sex = $request->sex;
         $user->updated_at = Carbon::now();
         if ($user->save()) {
+            $user->revokePermissionTo('change_profile');
             return back();
         } else {
             return back()->withErrors(['info' => 'Произошла ошибка.']);
@@ -227,7 +230,7 @@ class AccountController extends Controller
         return view('Account.partial.partial_subscribe_time', compact('times'));
     }
 
-    public function subscribe_save(SubscribeManageRequest $request)
+    public function subscribe_save(SubscribeRequest $request)
     {
         $sub = new Subscribe();
         $sub->id_doctor = $request->doctor;
@@ -265,10 +268,15 @@ class AccountController extends Controller
 
     public function manage_register()
     {
-        $user = null;
         $doctors = Doctor::all();
         $category = ServiceCategory::all();
-        return view('Account.Manage.manage_register_user', compact('user', 'category', 'doctors'));
+        return view('Account.Manage.manage_register_user', compact( 'category', 'doctors'));
+    }
+
+    public function manage_register_new(){
+        $doctors = Doctor::all();
+        $category = ServiceCategory::all();
+        return view('Account.Manage.manage_register_new_user',compact( 'category', 'doctors'));
     }
 
     public function manage_register_found(UserInfoRequest $request)
@@ -286,10 +294,37 @@ class AccountController extends Controller
         $sub->id_service_category = ServiceCategory::all()->where('url_name', '=', $request->category)->first()->id;
         $sub->time = $request->time;
         $sub->date = $request->date;
-        $sub->user_login = User::all()->where('tel_number','=',$request->tel_number)->first()->get('login');
+        $sub->user_login = User::all()->where('tel_number','=',$request->tel_number)->first()->login;
         $sub->id_service = $request->service;
         if($sub->save()){
-            return redirect()->back()->with('success', 'Пользователь успешно зарегистрирован');
+            return redirect()->back()->with('success', 'Пользователь успешно записан на прием');
+        }
+        return redirect()->back()->with('fail', 'Произошла ошибка');
+    }
+
+    public function save_manage_user(ManageNewUser $request){
+        $user = new User();
+        $user->login = $request->login;
+        $user->tel_number = $request->tel_number;
+        $user->sex = $request->sex;
+        $user->full_name = $request->surname.' '.$request->name.' '.$request->second_name;
+        $user->birthday = $request->date_born;
+        $user->password = password_hash($request->password, PASSWORD_DEFAULT);
+        $user->created_at = Carbon::now();
+        $user->updated_at = Carbon::now();
+        $user->assignRole('user')->givePermissionTo(['view_profile','subscribe','change_profile','search_info']);
+        if ($user->save()) {
+            $sub = new Subscribe();
+            $sub->id_doctor = $request->doctor;
+            $sub->id_service_category = ServiceCategory::all()->where('url_name', '=', $request->category)->first()->id;
+            $sub->time = $request->time;
+            $sub->date = $request->date;
+            $sub->user_login = $request->login;
+            $sub->id_service = $request->service;
+            if ($sub->save()){
+                return redirect()->back()->with('success', 'Пользователь успешно зарегистрирован и записан на прием');
+            }
+            $user->delete();
         }
         return redirect()->back()->with('fail', 'Произошла ошибка');
     }

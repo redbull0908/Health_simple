@@ -79,16 +79,16 @@
                         <ul class="submenu">
                             <li><a href="{{route('profile')}}" class="sub-menu-item">Профиль</a></li>
                             @can('subscribe')
-                                <li><a href="{{route('subscribe')}}" class="sub-menu-item">Записаться на прием</a></li>
-                                <li><a href="{{route('get_user_subscribe')}}" class="sub-menu-item">Просмотреть
-                                        записи</a></li>
+                                <li class="sm:-hidden"><a href="{{route('subscribe')}}" class="sub-menu-item">Записаться на прием</a></li>
+{{--                                <li class="sm:-hidden"><a href="{{route('get_user_subscribe')}}" class="sub-menu-item">Просмотреть--}}
+{{--                                        записи</a></li>--}}
                             @endcan
                             @can('doctor_subscribe')
-                                <li><a href="{{route('get_doctor_subscribe')}}" class="sub-menu-item">Просмотреть
-                                        записи</a></li>
+{{--                                <li><a href="{{route('get_doctor_subscribe')}}" class="sub-menu-item">Просмотреть--}}
+{{--                                        записи</a></li>--}}
                             @endcan
                             @can('change_profile')
-                                <li><a href="{{route('change')}}" class="sub-menu-item">Изменить профиль</a></li>
+{{--                                <li><a href="{{route('change')}}" class="sub-menu-item">Изменить профиль</a></li>--}}
                             @endcan
                             <li><a href="{{route('logout')}}" class="sub-menu-item">Выйти</a></li>
                         </ul>
@@ -99,13 +99,24 @@
                         <a href="javascript:void(0)">{{Auth::user()->full_name}}</a><span class="menu-arrow"></span>
                         <ul class="submenu">
                             <li><a href="{{route('schedules_doctors')}}" class="sub-menu-item">Рассписание врачей</a></li>
-                            <li><a href="{{route('manage_register')}}" class="sub-menu-item">Записать пациента на прием</a></li>
+                            <li><a href="{{route('manage_new_register')}}" class="sub-menu-item">Запись нового пациента</a></li>
+                            <li><a href="{{route('manage_register')}}" class="sub-menu-item">Запись по номеру телефона</a></li>
                             <li><a href="{{route('logout')}}" class="sub-menu-item">Выйти</a></li>
+                        </ul>
                 @endcan
+                @can('admin_panel')
+                    <li class="has-submenu parent-parent-menu-item">
+                        <a href="javascript:void(0)">{{Auth::user()->full_name}}</a><span
+                            class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li><a href="{{route('main').'/admin_panel'}}" class="sub-menu-item">Админ_панель
+                                </a></li>
+                            <li><a href="{{route('logout')}}" class="sub-menu-item">Выйти</a></li>
+                        </ul>
+                            @endcan
             </ul><!--end navigation menu-->
         </div><!--end navigation-->
     </div>
-
     <!--end container-->
 </nav><!--end header-->
 <!-- End Navbar -->

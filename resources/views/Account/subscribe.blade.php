@@ -82,7 +82,7 @@
                 @hasrole('user')
                 @if(!Auth::user()->full_name or !Auth::user()->birthday or !Auth::user()->sex)
                     <div class="lg:w-3/4 md:w-2/3 md:px-3 mt-[30px] md:mt-0">
-                        <span class="p-0 text-lg error_message text-left">Что бы записаться к врачу , укажите данные о себе в своем профиле.<a class="ml-2 text-indigo-600" href="{{route('change')}}">Указать</a> </span>
+                        <span class="p-0 text-lg error_message text-center">Что бы записаться к врачу , укажите данные о себе в своем профиле.<a class="ml-2 text-indigo-600" href="{{route('change')}}">Указать</a> </span>
                     </div>
                 @else
                     <div class="lg:w-3/4 md:w-2/3 md:px-3 mt-[30px] md:mt-0">

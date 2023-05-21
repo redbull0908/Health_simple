@@ -1,11 +1,11 @@
-@extends('layouts.index',['title' => 'Рассписание врачей'])
+@extends('layouts.index',['title' => 'Запись пациента'])
 @section('content')
     <!-- Start Hero -->
     <section class="relative table w-full py-36 bg_manage_register bg-center bg-no-repeat">
         <div class="absolute inset-0 bg-black opacity-75"></div>
         <div class="container">
             <div class="grid grid-cols-1 pb-8 text-center mt-10">
-                <h3 class="md:text-4xl text-3xl md:leading-normal tracking-wide leading-normal font-medium text-white">Регистрация пациента</h3>
+                <h3 class="md:text-4xl text-3xl md:leading-normal tracking-wide leading-normal font-medium text-white">Запись пациента на прием по номеру телефона</h3>
             </div><!--end grid-->
         </div><!--end container-->
     </section><!--end section-->

@@ -7,15 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="<?php echo e(asset('image/icon/favicon.png')); ?>" type="image/png">
+    <link rel="shortcut icon" href="<?php echo e(asset('image/icon/favicon.png'), false); ?>" type="image/png">
     <!-- Css -->
-    <link href="<?php echo e(asset("css/tiny-slider.css")); ?>" rel="stylesheet">
-    <link href="<?php echo e(asset("css/tobii.min.css")); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset("css/tiny-slider.css"), false); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset("css/tobii.min.css"), false); ?>" rel="stylesheet">
     <!-- Main Css -->
-    <link href="<?php echo e(asset("css/line.css")); ?>" rel="stylesheet">
-    <link href="<?php echo e(asset("css/icons.css")); ?>" rel="stylesheet">
-    <link href="<?php echo e(asset("css/tailwind.css")); ?>" rel="stylesheet">
-    <title><?php echo e($title); ?></title>
+    <link href="<?php echo e(asset("css/line.css"), false); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset("css/icons.css"), false); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset("css/tailwind.css"), false); ?>" rel="stylesheet">
+    <title><?php echo e($title, false); ?></title>
 </head>
 
 <body class="font-nunito text-base text-black dark:text-white dark:bg-slate-900">
@@ -34,12 +34,12 @@
 <nav id="topnav" class="defaultscroll is-sticky">
     <div class="container">
         <!-- Logo container-->
-        <a class="logo pl-0" href="<?php echo e(route('main')); ?>">
+        <a class="logo pl-0" href="<?php echo e(route('main'), false); ?>">
                 <span class="inline-block dark:hidden">
-                    <img src="<?php echo e(asset("image/icon/logo-light.png")); ?>" class="l-dark" height="24" alt="">
-                    <img src="<?php echo e(asset("image/icon/logo-dark.png")); ?>" class="l-light" height="24" alt="">
+                    <img src="<?php echo e(asset("image/icon/logo-light.png"), false); ?>" class="l-dark" height="24" alt="">
+                    <img src="<?php echo e(asset("image/icon/logo-dark.png"), false); ?>" class="l-light" height="24" alt="">
                 </span>
-            <img src="<?php echo e(asset("image/icon/logo-light.png")); ?>" height="24" class="hidden dark:inline-block" alt="">
+            <img src="<?php echo e(asset("image/icon/logo-light.png"), false); ?>" height="24" class="hidden dark:inline-block" alt="">
         </a>
 
         <!-- End Logo container-->
@@ -63,49 +63,60 @@
         <div id="navigation">
             <!-- Navigation Menu-->
             <ul class="navigation-menu nav-light">
-                <li><a href="<?php echo e(route('main')); ?>" class="sub-menu-item">Главная</a></li>
+                <li><a href="<?php echo e(route('main'), false); ?>" class="sub-menu-item">Главная</a></li>
 
-                <li><a href="<?php echo e(route('services')); ?>" class="sub-menu-item">Услуги и цены</a></li>
+                <li><a href="<?php echo e(route('services'), false); ?>" class="sub-menu-item">Услуги и цены</a></li>
 
-                <li><a href="<?php echo e(route('doctors')); ?>" class="sub-menu-item">Врачи</a></li>
+                <li><a href="<?php echo e(route('doctors'), false); ?>" class="sub-menu-item">Врачи</a></li>
 
-                <li><a href="<?php echo e(route('contacts')); ?>" class="sub-menu-item">Контакты</a></li>
+                <li><a href="<?php echo e(route('contacts'), false); ?>" class="sub-menu-item">Контакты</a></li>
                 <?php if(auth()->guard()->guest()): ?>
-                    <li><a href="<?php echo e(route('login')); ?>" class="sub-menu-item">Войти | Регистрация</a></li>
+                    <li><a href="<?php echo e(route('login'), false); ?>" class="sub-menu-item">Войти | Регистрация</a></li>
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view_profile')): ?>
                     <li class="has-submenu parent-parent-menu-item">
-                        <a href="javascript:void(0)"><?php echo e(Auth::user()->login); ?></a><span class="menu-arrow"></span>
+                        <a href="javascript:void(0)"><?php echo e(Auth::user()->login, false); ?></a><span class="menu-arrow"></span>
                         <ul class="submenu">
-                            <li><a href="<?php echo e(route('profile')); ?>" class="sub-menu-item">Профиль</a></li>
+                            <li><a href="<?php echo e(route('profile'), false); ?>" class="sub-menu-item">Профиль</a></li>
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('subscribe')): ?>
-                                <li><a href="<?php echo e(route('subscribe')); ?>" class="sub-menu-item">Записаться на прием</a></li>
-                                <li><a href="<?php echo e(route('get_user_subscribe')); ?>" class="sub-menu-item">Просмотреть
-                                        записи</a></li>
+                                <li class="sm:-hidden"><a href="<?php echo e(route('subscribe'), false); ?>" class="sub-menu-item">Записаться на прием</a></li>
+
+
                             <?php endif; ?>
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('doctor_subscribe')): ?>
-                                <li><a href="<?php echo e(route('get_doctor_subscribe')); ?>" class="sub-menu-item">Просмотреть
-                                        записи</a></li>
+
+
                             <?php endif; ?>
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('change_profile')): ?>
-                                <li><a href="<?php echo e(route('change')); ?>" class="sub-menu-item">Изменить профиль</a></li>
+
                             <?php endif; ?>
-                            <li><a href="<?php echo e(route('logout')); ?>" class="sub-menu-item">Выйти</a></li>
+                            <li><a href="<?php echo e(route('logout'), false); ?>" class="sub-menu-item">Выйти</a></li>
                         </ul>
                 <?php endif; ?>
 
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage')): ?>
                     <li class="has-submenu parent-parent-menu-item">
-                        <a href="javascript:void(0)"><?php echo e(Auth::user()->full_name); ?></a><span class="menu-arrow"></span>
+                        <a href="javascript:void(0)"><?php echo e(Auth::user()->full_name, false); ?></a><span class="menu-arrow"></span>
                         <ul class="submenu">
-                            <li><a href="<?php echo e(route('schedules_doctors')); ?>" class="sub-menu-item">Рассписание врачей</a></li>
-                            <li><a href="<?php echo e(route('manage_register')); ?>" class="sub-menu-item">Записать пациента на прием</a></li>
-                            <li><a href="<?php echo e(route('logout')); ?>" class="sub-menu-item">Выйти</a></li>
+                            <li><a href="<?php echo e(route('schedules_doctors'), false); ?>" class="sub-menu-item">Рассписание врачей</a></li>
+                            <li><a href="<?php echo e(route('manage_new_register'), false); ?>" class="sub-menu-item">Запись нового пациента</a></li>
+                            <li><a href="<?php echo e(route('manage_register'), false); ?>" class="sub-menu-item">Запись по номеру телефона</a></li>
+                            <li><a href="<?php echo e(route('logout'), false); ?>" class="sub-menu-item">Выйти</a></li>
+                        </ul>
                 <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('admin_panel')): ?>
+                    <li class="has-submenu parent-parent-menu-item">
+                        <a href="javascript:void(0)"><?php echo e(Auth::user()->full_name, false); ?></a><span
+                            class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li><a href="<?php echo e(route('main').'/admin_panel', false); ?>" class="sub-menu-item">Админ_панель
+                                </a></li>
+                            <li><a href="<?php echo e(route('logout'), false); ?>" class="sub-menu-item">Выйти</a></li>
+                        </ul>
+                            <?php endif; ?>
             </ul><!--end navigation menu-->
         </div><!--end navigation-->
     </div>
-
     <!--end container-->
 </nav><!--end header-->
 <!-- End Navbar -->
@@ -122,7 +133,7 @@
                     <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
                         <div class="lg:col-span-4 md:col-span-12">
                             <a href="#" class="text-[22px] focus:outline-none">
-                                <img src="<?php echo e(asset('image/icon/logo-dark.png')); ?>" alt="">
+                                <img src="<?php echo e(asset('image/icon/logo-dark.png'), false); ?>" alt="">
                             </a>
                             <ul class="list-none mt-6">
                                 <li class="inline"><a href="tel:+375336962909" target="_blank"
@@ -157,26 +168,26 @@
                                 <li><a href="<?php echo e(route('contacts')); ?>"
                                        class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                             class="uil uil-angle-right-b me-1"></i> Контакты</a></li>
-                                <li class="mt-[10px]"><a href="<?php echo e(route('services')); ?>"
+                                <li class="mt-[10px]"><a href="<?php echo e(route('services'), false); ?>"
                                                          class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                             class="uil uil-angle-right-b me-1"></i> Услуги и цены</a></li>
-                                <li class="mt-[10px]"><a href="<?php echo e(route('doctors')); ?>"
+                                <li class="mt-[10px]"><a href="<?php echo e(route('doctors'), false); ?>"
                                                          class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                             class="uil uil-angle-right-b me-1"></i> Врачи</a></li>
                                 <?php if(\Spatie\Permission\PermissionServiceProvider::bladeMethodWrapper('hasRole', 'user')): ?>
                                 <li class="mt-[10px]"><a
-                                        href="<?php echo e(Auth::check() ? route('subscribe') : route('register')); ?>"
+                                        href="<?php echo e(Auth::check() ? route('subscribe') : route('register'), false); ?>"
                                         class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                             class="uil uil-angle-right-b me-1"></i> Запись на прием</a></li>
                                 <?php endif; ?>
                                 <?php if(auth()->guard()->guest()): ?>
                                     <li class="mt-[10px]"><a
-                                            href="<?php echo e(Auth::check() ? route('subscribe') : route('register')); ?>"
+                                            href="<?php echo e(Auth::check() ? route('subscribe') : route('register'), false); ?>"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                                 class="uil uil-angle-right-b me-1"></i> Запись на прием</a></li>
                                 <?php endif; ?>
                                 <?php if(auth()->guard()->guest()): ?>
-                                    <li class="mt-[10px]"><a href="<?php echo e(route('login')); ?>"
+                                    <li class="mt-[10px]"><a href="<?php echo e(route('login'), false); ?>"
                                                              class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                                 class="uil uil-angle-right-b me-1"></i> Войти | Регистрация</a></li>
                                 <?php endif; ?>
@@ -214,11 +225,11 @@
 <!-- Back to top -->
 
 <!-- JAVASCRIPTS -->
-<script src="<?php echo e(asset("js/tiny-slider.js")); ?>"></script>
-<script src="<?php echo e(asset("js/tobii.min.js")); ?>"></script>
-<script src="<?php echo e(asset("js/feather.min.js")); ?>"></script>
-<script src="<?php echo e(asset("js/plugins.init.js")); ?>"></script>
-<script src="<?php echo e(asset("js/app.js")); ?>"></script>
+<script src="<?php echo e(asset("js/tiny-slider.js"), false); ?>"></script>
+<script src="<?php echo e(asset("js/tobii.min.js"), false); ?>"></script>
+<script src="<?php echo e(asset("js/feather.min.js"), false); ?>"></script>
+<script src="<?php echo e(asset("js/plugins.init.js"), false); ?>"></script>
+<script src="<?php echo e(asset("js/app.js"), false); ?>"></script>
 <!-- JAVASCRIPTS -->
 </body>
 

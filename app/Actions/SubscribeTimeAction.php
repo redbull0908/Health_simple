@@ -5,6 +5,7 @@ namespace App\Actions;
 use App\Models\Schedule_template;
 use App\Models\Subscribe;
 use Carbon\Carbon;
+use function Psy\sh;
 
 class SubscribeTimeAction {
     public function handle(int $id , string $date):array
@@ -38,9 +39,9 @@ class SubscribeTimeAction {
                         $carbon->addMinutes($template->interval);
                         $time[] = $carbon->format('H:i');
                     }
-                    $shed[] = Subscribe::all()->where('date','=',$date)->value('time');
-                    $shed[]=$template->time_to;
-                    return array_diff($time,$shed);
+                    $shed[] = Subscribe::all()->where('date','=',$date)->pluck('time');
+                    $time = array_diff($time,[$template->time_to]);
+                    return array_diff($time,$shed[0]->toArray());
                 }
                 else
                 {
@@ -57,9 +58,9 @@ class SubscribeTimeAction {
                         $carbon->addMinutes($template->interval);
                         $time[] = $carbon->format('H:i');
                     }
-                    $shed[] = Subscribe::all()->where('date','=',$date)->value('time');
-                    $shed[]=$template->time_to;
-                    return array_diff($time,$shed);
+                    $shed[] = Subscribe::all()->where('date','=',$date)->pluck('time');
+                    $time = array_diff($time,[$template->time_to]);
+                    return array_diff($time,$shed[0]->toArray());
                 }
             }
         }
@@ -74,9 +75,9 @@ class SubscribeTimeAction {
                 $carbon->addMinutes($template->interval);
                 $time[] = $carbon->format('H:i');
             }
-            $shed[] = Subscribe::all()->where('date','=',$date)->value('time');
-            $shed[]=$template->time_to;
-            return array_diff($time,$shed);
+            $shed[] = Subscribe::all()->where('date','=',$date)->pluck('time');
+            $time = array_diff($time,[$template->time_to]);
+            return array_diff($time,$shed[0]->toArray());
         }
     }
 }

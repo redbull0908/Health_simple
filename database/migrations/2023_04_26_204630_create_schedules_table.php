@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('doctor_id')->unsigned();
             $table->date('date');
             $table->bigInteger('schedule_template_id')->unsigned();
-            $table->foreign('doctor_id')->references('id')->on('doctors');
+            $table->foreign('doctor_id')->references('id')->on('doctors')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('schedule_template_id')->references('id')->on('schedule_templates');
         });
     }

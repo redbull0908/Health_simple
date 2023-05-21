@@ -21,9 +21,9 @@ return new class extends Migration
             $table->string('time');
             $table->date('date');
             $table->string('user_login');
-            $table->foreign('id_service_category')->references('id')->on('service_categories');
-            $table->foreign('id_service')->references('id')->on('services');
-            $table->foreign('id_doctor')->references('id')->on('doctors');
+            $table->foreign('id_service_category')->references('id')->on('service_categories')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('id_service')->references('id')->on('services')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('id_doctor')->references('id')->on('doctors')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
